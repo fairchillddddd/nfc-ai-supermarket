@@ -117,6 +117,22 @@
     .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
 
+    /* Ambient data-centre motion only — no added globe or replacement objects. */
+    .data-centre-motion { position:absolute; z-index:1; inset:0; pointer-events:none; overflow:hidden; }
+    .data-centre-motion::before { content:""; position:absolute; inset:0; opacity:.28; mix-blend-mode:screen; background:
+      linear-gradient(105deg, transparent 0 9%, #29d8ff00 13%, #49eaff22 16%, transparent 19% 35%, #2bdcff00 39%, #64f1ff1c 43%, transparent 47% 72%, #29d8ff00 76%, #49eaff22 80%, transparent 84%),
+      radial-gradient(ellipse at 8% 45%, #21cfff22 0%, transparent 25%),
+      radial-gradient(ellipse at 92% 42%, #21cfff22 0%, transparent 25%);
+      animation: data-centre-lightflow 11s ease-in-out infinite alternate; }
+    .data-centre-motion::after { content:""; position:absolute; left:0; right:0; top:-28%; height:14%; opacity:0; background:linear-gradient(180deg, transparent, #63eaff0b 35%, #70efff40 50%, #63eaff0b 65%, transparent); filter:blur(3px); mix-blend-mode:screen; animation: data-centre-scan 13s linear infinite; }
+    .data-centre-motion .rack-light { position:absolute; top:8%; bottom:24%; width:2px; opacity:0; background:linear-gradient(180deg, transparent, #48e4ff99 20%, #b6f8ff 50%, #39d7ff88 80%, transparent); box-shadow:0 0 7px 2px #28cfff55; }
+    .data-centre-motion .rack-light.left { left:5.5%; animation: rack-status 5.2s ease-in-out infinite; }
+    .data-centre-motion .rack-light.right { right:5.5%; animation: rack-status 6.3s ease-in-out -2.4s infinite; }
+    @keyframes data-centre-lightflow { 0% { transform:translateX(-1%) scale(1); opacity:.12; } 45% { opacity:.32; } 100% { transform:translateX(1%) scale(1.015); opacity:.2; } }
+    @keyframes data-centre-scan { 0% { top:-28%; opacity:0; } 12% { opacity:.65; } 88% { opacity:.35; } 100% { top:110%; opacity:0; } }
+    @keyframes rack-status { 0%,100% { opacity:0; } 18% { opacity:.22; } 33% { opacity:.06; } 51% { opacity:.42; } 68% { opacity:.12; } }
+    @media (prefers-reduced-motion:reduce) { .data-centre-motion::before, .data-centre-motion::after, .data-centre-motion .rack-light { animation:none !important; } }
+
     .showroom { line-height: normal; }
     .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
@@ -128,6 +144,7 @@
       <div class="brand-lockup"><span class="brand-monogram">N.FC</span><span class="brand-copy"><span class="brand-name">N.FC AI SUPERMARKET</span><span class="brand-caption">A MORE INTELLIGENT WAY TO EXPLORE</span></span></div>
     </header>
     <img class="reference" src="/assets/B4AC8926-2898-4B33-9BD0-46CF56A3038D.png" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
+    <div class="data-centre-motion" aria-hidden="true"><i class="rack-light left"></i><i class="rack-light right"></i></div>
     <div class="background-finish" aria-hidden="true"></div>
     <div class="welcome-copy" aria-label="My name is Natha. Welcome to N.FC AI SUPERMARKET. Your AI-powered digital product store. Discover, explore, and upgrade your potential.">
       <div class="welcome-title">My name is Natha,<strong>welcome to N.FC AI SUPERMARKET.</strong></div>
