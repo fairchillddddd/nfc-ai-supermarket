@@ -112,6 +112,19 @@
     @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; } .energy-wave, .orbit, .spark, .holo-cube, .shelf-sweep, .animated-book, .palm-orb, .palm-orb::before { animation: none !important; } }
       /* Match the supplied reference artwork exactly: preserve its original color and built-in composition. */
     .background-finish, .welcome-copy, .energy-wave, .depth-scene, .premium-header, .showroom::after { display: none !important; }
+
+    /* Independent rotating 3D holographic globe overlay, centered over the globe in the reference artwork. */
+    .globe-3d { position:absolute; z-index:2; left:50%; top:31.3%; width:15.2%; aspect-ratio:1; transform:translate(-50%,-2%); border-radius:50%; pointer-events:none; overflow:hidden; background:radial-gradient(circle at 32% 25%, #d9fbff26 0 2%, #52dfff1c 18%, #071e35b8 57%, #020913e8 76%); box-shadow:inset -13px -8px 24px #000b, inset 5px 2px 16px #8cecff66, 0 0 16px #37d9ff66, 0 0 35px #13aaff32; }
+    .globe-3d::before, .globe-3d::after { content:""; position:absolute; inset:-2%; border:1px solid #6ceaffb8; border-radius:50%; box-shadow:inset 0 0 9px #35d9ff66; }
+    .globe-3d::before { background:repeating-linear-gradient(0deg, transparent 0 10%, #55e8ff77 10.4% 10.9%, transparent 11.3% 20%); animation:globe-latitude 8s linear infinite; }
+    .globe-3d::after { inset:0 18%; border:1px solid #67eaffb0; background:repeating-linear-gradient(90deg, transparent 0 23%, #55e8ff88 24% 25%, transparent 26% 48%); animation:globe-longitude 5s linear infinite; }
+    .globe-3d .globe-meridian { position:absolute; inset:0 32%; border:1px solid #65e9ff88; border-radius:50%; animation:globe-longitude 7s linear infinite reverse; }
+    .globe-3d .globe-equator { position:absolute; left:-8%; top:40%; width:116%; height:20%; border:1px solid #8bf1ffb0; border-radius:50%; transform:rotate(-12deg); box-shadow:0 0 9px #28d8ff66; }
+    @keyframes globe-latitude { from { transform:rotateX(0deg) rotateZ(-8deg); } to { transform:rotateX(360deg) rotateZ(-8deg); } }
+    @keyframes globe-longitude { from { transform:rotateY(0deg); } to { transform:rotateY(360deg); } }
+    @media (max-width:520px) { .globe-3d { width:15.2%; } }
+    @media (prefers-reduced-motion: reduce) { .globe-3d::before, .globe-3d::after, .globe-3d .globe-meridian { animation:none !important; } }
+
     .showroom { line-height: normal; }
     .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
@@ -139,6 +152,7 @@
       <div class="orbit-stage"><span class="orbit one"></span><span class="orbit two"></span><span class="orbit three"></span></div>
       <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i><i class="spark d"></i>
     </div>
+    <div class="globe-3d" aria-hidden="true"><span class="globe-meridian"></span><span class="globe-equator"></span></div>
     <div class="sound-control">
       <button class="sound-button" id="nathaSound" type="button" aria-label="Play Natha's welcome greeting">Meet Natha  ·  Hear welcome</button>
       <span class="voice-status" id="voiceStatus" role="status" aria-live="polite"></span>
