@@ -21,7 +21,7 @@
     .concierge-label { display: flex; align-items: center; gap: 8px; margin-left: auto; margin-right: 14px; color: #fffde7; font: 500 9px/1 Inter, Arial, sans-serif; letter-spacing: .16em; text-shadow: 0 2px 12px #000; }
     .concierge-dot { width: 5px; height: 5px; border-radius: 50%; background: #d8bd7d; box-shadow: 0 0 9px #e3c477; }
 
-    .reference { display: block; width: 100%; height: auto; filter: grayscale(1) brightness(.48) contrast(1.32); transform: translate3d(var(--move-x), var(--move-y), 0) scale(1.075); transform-origin: center; transition: transform 250ms cubic-bezier(.2,.7,.2,1), filter 700ms ease; will-change: transform; }
+    .reference { display: block; width: 100%; height: auto; filter: none; transform: none; transform-origin: center; transition: none; will-change: transform; }
     .background-finish { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(180deg, #00000020 0%, #00000026 28%, #00000052 100%), radial-gradient(ellipse at 50% 50%, transparent 22%, #00000088 100%); mix-blend-mode: multiply; opacity: .98; }
     .welcome-copy { position: absolute; z-index: 3; left: 25.7%; top: 51.5%; width: 27.8%; height: 21.5%; display: flex; flex-direction: column; justify-content: center; gap: clamp(5px, .75vw, 10px); padding: 1.2% 1.45%; overflow: hidden; border: 1px solid #d8edf28f; border-radius: clamp(10px, 1.4vw, 20px); color: #fff; background: linear-gradient(118deg, #101720ed, #25333bdc 72%, #21313bcc); box-shadow: inset 0 1px #ffffff38, 0 10px 36px #08121c50, 0 0 20px #ffffff22; backdrop-filter: blur(14px); line-height: 1.2; pointer-events: none; }
     .welcome-title { font: 500 clamp(9px, 1.18vw, 17px)/1.32 Inter, Arial, sans-serif; letter-spacing: .005em; text-shadow: 0 1px 8px #080c10a3; }
@@ -110,6 +110,9 @@
       .voice-status { max-width: 68vw; font-size: 10px; }
     }
     @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; } .energy-wave, .orbit, .spark, .holo-cube, .shelf-sweep, .animated-book, .palm-orb, .palm-orb::before { animation: none !important; } }
+      /* Match the supplied reference artwork exactly: preserve its original color and built-in composition. */
+    .background-finish, .welcome-copy, .energy-wave, .depth-scene, .premium-header, .showroom::after { display: none !important; }
+    .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
   </style>
 </head>
 <body>
