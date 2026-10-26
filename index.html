@@ -33,7 +33,8 @@ window.addEventListener('error',function(){
 <script>
 if(!window.THREE){const l=document.getElementById("loading");if(l)l.textContent="3D library could not load · N.FC";throw new Error("Three.js CDN unavailable");}
 window.addEventListener('error',e=>{const l=document.querySelector('#loading');if(l&&l.isConnected){l.innerHTML='Unable to start 3D scene&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">A browser or graphics error interrupted initialization. Refresh or try another browser.</small>'}});
-window.__nfc3dStarted=true;clearTimeout(window.__nfc3dFallbackTimer);\nconst root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
+window.__nfc3dStarted=true;clearTimeout(window.__nfc3dFallbackTimer);
+const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
 const loadTimer=setTimeout(()=>{if(loading&&loading.isConnected){loading.innerHTML='3D scene is taking too long to load&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">Please refresh once. If it persists, the browser may be blocking the 3D module.</small>'}},8000);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x777777);scene.fog=new THREE.FogExp2(0x777777,.012);
 const camera=new THREE.PerspectiveCamera(54,innerWidth/innerHeight,.1,160);camera.position.set(0,5.4,20.5);
@@ -126,7 +127,8 @@ function holoRect(w,h,x,y,z){const pts=[[-w/2,-h/2,0],[w/2,-h/2,0],[w/2,h/2,0],[
 holoRect(3.25,5.25,0,4.15,-4.55);
 for(let i=0;i<12;i++){const w=i%4===0?2.3:1.15+(i%5)*.22;const y=5.85-i*.28;const bar=box(w,.025,.018,galleryLight,-.75+w/2,y,-4.5);bar.material=galleryLight;}
 for(let i=0;i<4;i++){const frame=new THREE.Mesh(new THREE.PlaneGeometry(.65,.52),hologramMat);frame.position.set(-.85+i*.58,2.95,-4.55);scene.add(frame);holoRect(.65,.52,-.85+i*.58,2.95,-4.53);}
-\n// Monochrome supermarket display bays: satin-metal frames, floating shelves, white edge lighting
+
+// Monochrome supermarket display bays: satin-metal frames, floating shelves, white edge lighting
 const shelfMetal=mat(0x777777,.82,.24), shelfBlack=mat(0x171717,.68,.3), shelfWhite=mat(0xe8e8e8,.32,.22,0x666666,.18);
 for(const side of [-1,1]){
   const sx=side*7.2, backZ=-7.1;
