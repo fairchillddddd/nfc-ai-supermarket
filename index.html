@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909">
 <title>N.FC AI SUPERMARKET — Interactive 3D Universe</title>
 <style>
-:root{color-scheme:dark;--blue:#b8b8b8;--muted:#b4b4b4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090909;color:#f8f8f8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}body{position:relative}#scene{position:fixed;inset:0;z-index:0}#scene canvas{display:block;width:100%;height:100%;outline:none}.vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:linear-gradient(90deg,#090909ee 0%,#090909b8 30%,transparent 70%),linear-gradient(0deg,#090909df 0%,transparent 34%,#09090945 100%)}header{position:fixed;z-index:3;top:0;left:0;right:0;padding:25px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #9bcaff22;background:linear-gradient(#090909a8,transparent)}.brand{font-size:23px;line-height:.9;letter-spacing:-.07em;font-weight:900}.brand small{display:block;font-size:9px;letter-spacing:.25em;margin-top:8px;font-weight:700}.topright{display:flex;align-items:center;gap:24px;font-size:11px;color:#dcdcdc}.status{display:flex;gap:8px;align-items:center;letter-spacing:.14em;text-transform:uppercase;font-size:9px}.dot{width:7px;height:7px;border-radius:50%;background:#cacaca;box-shadow:0 0 12px #cacaca}.outline{padding:11px 17px;border:1px solid #80caff6b;border-radius:99px;text-decoration:none;color:white;background:#0713218a;backdrop-filter:blur(10px)}.content{position:fixed;z-index:2;left:clamp(20px,8vw,120px);top:50%;transform:translateY(-43%);width:min(490px,calc(100% - 40px));pointer-events:none}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#bfbfbf;font-weight:800;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:25px;height:1px;background:#bfbfbf;box-shadow:0 0 12px #bfbfbf}.content h1{font-size:clamp(49px,7.5vw,94px);letter-spacing:-.085em;line-height:.88;margin:25px 0 22px;font-weight:850}.content h1 span{display:block;color:#c6c6c6;text-shadow:0 0 45px #2d91ff62}.content p{max-width:400px;color:#cccccc;font-size:14px;line-height:1.8;margin:0 0 25px}.actions{display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}.btn{display:inline-flex;align-items:center;gap:13px;text-decoration:none;border-radius:99px;padding:14px 19px;font-size:11px;font-weight:800;color:#0f0f0f;background:linear-gradient(110deg,#f0f0f0,#aeaeae);box-shadow:0 0 28px #168eff44;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 0 38px #168eff77}.btn.secondary{background:#081421b5;border:1px solid #8acbff55;color:#f7f7f7;box-shadow:none}.bottom{position:fixed;z-index:3;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);bottom:24px;display:flex;align-items:end;justify-content:space-between;gap:20px;pointer-events:none}.legend{display:flex;gap:24px;color:#b9b9b9;font-size:9px;letter-spacing:.13em;text-transform:uppercase}.legend span{display:flex;gap:8px;align-items:center}.legend i{width:6px;height:6px;border-radius:50%;background:#b8b8b8;box-shadow:0 0 9px #b8b8b8}.hint{text-align:right;color:#a2a2a2;font-size:9px;letter-spacing:.14em;text-transform:uppercase}.hint b{display:block;color:#f0f0f0;font-size:10px;margin-bottom:5px}.crosshair{position:fixed;z-index:2;right:clamp(20px,6vw,80px);top:50%;transform:translateY(-50%);color:#c8c8c8;font-size:9px;letter-spacing:.17em;writing-mode:vertical-rl;text-transform:uppercase;display:flex;align-items:center;gap:12px}.crosshair:before{content:"";height:45px;width:1px;background:linear-gradient(transparent,#b8b8b8,transparent)}.loading{position:fixed;z-index:10;inset:0;display:grid;place-items:center;background:#090909;color:#d8d8d8;letter-spacing:.2em;text-transform:uppercase;font-size:11px;transition:opacity .5s}.loading.hide{opacity:0;pointer-events:none}.toast{position:fixed;z-index:4;left:50%;bottom:70px;transform:translateX(-50%);padding:10px 14px;border:1px solid #72c5ff4c;border-radius:99px;background:#071321dc;color:#f0f0f0;font-size:10px;opacity:0;transition:opacity .25s;pointer-events:none}.toast.show{opacity:1}@media(max-width:700px){header{padding:20px}.brand{font-size:20px}.topright .status{display:none}.topright{gap:0}.content{top:42%;transform:translateY(-35%);left:22px;width:calc(100% - 44px)}.content h1{font-size:clamp(49px,13vw,75px);margin:20px 0 16px}.content p{font-size:12px;max-width:300px}.vignette{background:linear-gradient(90deg,#090909dd 0%,#0909099c 50%,#09090920 100%),linear-gradient(0deg,#090909df 0%,transparent 45%)}.crosshair{display:none}.bottom{left:20px;right:20px;bottom:18px}.legend{gap:12px;font-size:8px;flex-wrap:wrap;max-width:220px}.hint{font-size:8px;max-width:120px}.hint b{font-size:9px}.outline{padding:9px 12px;font-size:10px}}@media(prefers-reduced-motion:reduce){.btn{transition:none}}
+:root{color-scheme:dark;--blue:#b8b8b8;--muted:#b4b4b4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090909;color:#f8f8f8;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}body{position:relative}#scene{position:fixed;inset:0;z-index:0}#scene canvas{display:block;width:100%;height:100%;outline:none}.vignette{position:fixed;inset:0;pointer-events:none;z-index:1;background:linear-gradient(0deg,#09090955 0%,transparent 42%,#09090922 100%)}header{position:fixed;z-index:3;top:0;left:0;right:0;padding:25px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #9bcaff22;background:linear-gradient(#090909a8,transparent)}.brand{font-size:23px;line-height:.9;letter-spacing:-.07em;font-weight:900}.brand small{display:block;font-size:9px;letter-spacing:.25em;margin-top:8px;font-weight:700}.topright{display:flex;align-items:center;gap:24px;font-size:11px;color:#dcdcdc}.status{display:flex;gap:8px;align-items:center;letter-spacing:.14em;text-transform:uppercase;font-size:9px}.dot{width:7px;height:7px;border-radius:50%;background:#cacaca;box-shadow:0 0 12px #cacaca}.outline{padding:11px 17px;border:1px solid #80caff6b;border-radius:99px;text-decoration:none;color:white;background:#0713218a;backdrop-filter:blur(10px)}.content{display:none;position:fixed;z-index:2;left:clamp(20px,8vw,120px);top:50%;transform:translateY(-43%);width:min(490px,calc(100% - 40px));pointer-events:none}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#bfbfbf;font-weight:800;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:25px;height:1px;background:#bfbfbf;box-shadow:0 0 12px #bfbfbf}.content h1{font-size:clamp(49px,7.5vw,94px);letter-spacing:-.085em;line-height:.88;margin:25px 0 22px;font-weight:850}.content h1 span{display:block;color:#c6c6c6;text-shadow:0 0 45px #2d91ff62}.content p{max-width:400px;color:#cccccc;font-size:14px;line-height:1.8;margin:0 0 25px}.actions{display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto}.btn{display:inline-flex;align-items:center;gap:13px;text-decoration:none;border-radius:99px;padding:14px 19px;font-size:11px;font-weight:800;color:#0f0f0f;background:linear-gradient(110deg,#f0f0f0,#aeaeae);box-shadow:0 0 28px #168eff44;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 0 38px #168eff77}.btn.secondary{background:#081421b5;border:1px solid #8acbff55;color:#f7f7f7;box-shadow:none}.bottom{display:none;position:fixed;z-index:3;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);bottom:24px;display:flex;align-items:end;justify-content:space-between;gap:20px;pointer-events:none}.legend{display:flex;gap:24px;color:#b9b9b9;font-size:9px;letter-spacing:.13em;text-transform:uppercase}.legend span{display:flex;gap:8px;align-items:center}.legend i{width:6px;height:6px;border-radius:50%;background:#b8b8b8;box-shadow:0 0 9px #b8b8b8}.hint{text-align:right;color:#a2a2a2;font-size:9px;letter-spacing:.14em;text-transform:uppercase}.hint b{display:block;color:#f0f0f0;font-size:10px;margin-bottom:5px}.crosshair{display:none;position:fixed;z-index:2;right:clamp(20px,6vw,80px);top:50%;transform:translateY(-50%);color:#c8c8c8;font-size:9px;letter-spacing:.17em;writing-mode:vertical-rl;text-transform:uppercase;display:flex;align-items:center;gap:12px}.crosshair:before{content:"";height:45px;width:1px;background:linear-gradient(transparent,#b8b8b8,transparent)}.loading{position:fixed;z-index:10;inset:0;display:grid;place-items:center;background:#090909;color:#d8d8d8;letter-spacing:.2em;text-transform:uppercase;font-size:11px;transition:opacity .5s}.loading.hide{opacity:0;pointer-events:none}.toast{position:fixed;z-index:4;left:50%;bottom:70px;transform:translateX(-50%);padding:10px 14px;border:1px solid #72c5ff4c;border-radius:99px;background:#071321dc;color:#f0f0f0;font-size:10px;opacity:0;transition:opacity .25s;pointer-events:none}.toast.show{opacity:1}@media(max-width:700px){header{padding:20px}.brand{font-size:20px}.topright .status{display:none}.topright{gap:0}.content{top:42%;transform:translateY(-35%);left:22px;width:calc(100% - 44px)}.content h1{font-size:clamp(49px,13vw,75px);margin:20px 0 16px}.content p{font-size:12px;max-width:300px}.vignette{background:linear-gradient(90deg,#090909dd 0%,#0909099c 50%,#09090920 100%),linear-gradient(0deg,#090909df 0%,transparent 45%)}.crosshair{display:none}.bottom{left:20px;right:20px;bottom:18px}.legend{gap:12px;font-size:8px;flex-wrap:wrap;max-width:220px}.hint{font-size:8px;max-width:120px}.hint b{font-size:9px}.outline{padding:9px 12px;font-size:10px}}@media(prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 </head>
 <body>
@@ -19,19 +19,19 @@
 <script type="module">
 import * as THREE from 'three';
 const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
-const scene=new THREE.Scene();scene.background=new THREE.Color(0x050912);scene.fog=new THREE.FogExp2(0x050912,.028);
-const camera=new THREE.PerspectiveCamera(48,innerWidth/innerHeight,.1,120);camera.position.set(0,3.1,12.8);
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x777777);scene.fog=new THREE.FogExp2(0x777777,.012);
+const camera=new THREE.PerspectiveCamera(54,innerWidth/innerHeight,.1,160);camera.position.set(0,5.4,20.5);
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;root.appendChild(renderer.domElement);
-scene.add(new THREE.HemisphereLight(0x9bcfff,0x080d18,2.0));
+scene.add(new THREE.HemisphereLight(0xffffff,0x555555,3.0));
 function light(color,intensity,pos,distance=18){const l=new THREE.PointLight(color,intensity,distance,2);l.position.set(...pos);scene.add(l);return l}
-light(0x298cff,110,[0,5,2],24);light(0x55caff,75,[-6,3,-3],18);light(0x2266ff,95,[5,2,-5],18);
+light(0xffffff,150,[0,9,2],34);light(0xd8d8d8,110,[-9,6,-4],30);light(0xffffff,110,[9,6,-4],30);
 const mat=(color,metalness=.2,roughness=.35,emissive=0x000000,ei=0)=>new THREE.MeshStandardMaterial({color,metalness,roughness,emissive,emissiveIntensity:ei});
-const dark=mat(0x0a1422,.75,.28),blue=mat(0x2469a8,.6,.22,0x123c77,.5),bright=mat(0x7bcaff,.45,.2,0x329dff,2.2),white=mat(0xe3f3ff,.35,.3),black=mat(0x050a12,.2,.45);
-const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),mat(0x070d17,.35,.55,0x071a30,.25));floor.rotation.x=-Math.PI/2;floor.position.y=-.03;scene.add(floor);
-const grid=new THREE.GridHelper(70,70,0x2569a0,0x17304d);grid.position.y=.005;grid.material.transparent=true;grid.material.opacity=.34;scene.add(grid);
+const dark=mat(0x242424,.75,.28),blue=mat(0x888888,.6,.22,0x333333,.22),bright=mat(0xe8e8e8,.45,.2,0x777777,.45),white=mat(0xf5f5f5,.35,.3),black=mat(0x080808,.2,.45);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(100,100),mat(0xaaaaaa,.55,.28,0x222222,.08));floor.rotation.x=-Math.PI/2;floor.position.y=-.03;scene.add(floor);
+const grid=new THREE.GridHelper(70,70,0x999999,0x888888);grid.position.y=.005;grid.material.transparent=true;grid.material.opacity=.12;scene.add(grid);
 function box(w,h,d,material,x,y,z,parent=scene){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);parent.add(m);return m}
 function line(points,material){const g=new THREE.BufferGeometry().setFromPoints(points.map(p=>new THREE.Vector3(...p)));const l=new THREE.Line(g,material);scene.add(l);return l}
-const glowline=new THREE.LineBasicMaterial({color:0x53b8ff,transparent:true,opacity:.7});
+const glowline=new THREE.LineBasicMaterial({color:0xeeeeee,transparent:true,opacity:.65});
 /* architectural portal and wall frames */
 for(let z of [-8,-13]){box(24,.25,.35,dark,0,6,z);box(.22,6,.3,blue,-12,3,z);box(.22,6,.3,blue,12,3,z)}
 for(let x of [-10,-7,7,10]){box(.12,4,.12,bright,x,2,-10)}
@@ -57,7 +57,60 @@ const orbs=[];for(let i=0;i<18;i++){const a=i/18*Math.PI*2;const r=5.3+(i%3)*.55
 for(let i=0;i<30;i++){const p=new THREE.Mesh(new THREE.SphereGeometry(.018+(i%3)*.009,6,6),new THREE.MeshBasicMaterial({color:i%2?0x66bdff:0xc0e8ff,transparent:true,opacity:.65}));p.position.set((Math.random()-.5)*23,Math.random()*7-0.5,-Math.random()*17);scene.add(p);orbs.push({m:p,a:Math.random()*6,r:Math.random()*8,base:p.position.y,speed:.1+Math.random()*.2,particle:true})}
 // side display plinths and wall fins
 for(const x of [-6.1,6.1]){const pedestal=box(1.7,1.15,1.25,dark,x,.55,-3.6);box(1.75,.035,1.3,bright,x,1.14,-3.6);const stem=box(.06,2.5,.06,blue,x,2.3,-5.8);stem.rotation.z=x<0?-.12:.12}
-// Monochrome supermarket display bays: satin-metal frames, floating shelves, white edge lighting
+
+// Reference-photo architecture: broad curved wraparound electronics gallery, circular ceiling,
+ // reflective silver floor and a central floating holographic information panel.
+const galleryMetal=mat(0x9b9b9b,.88,.2), galleryDark=mat(0x343434,.72,.26), galleryLight=mat(0xf2f2f2,.45,.2,0x888888,.28);
+const hologramMat=new THREE.MeshBasicMaterial({color:0xf4f4f4,transparent:true,opacity:.17,side:THREE.DoubleSide,depthWrite:false});
+const holoLineMat=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.82});
+// Continuous curved multi-level shelves wrapping around the rear half of the room.
+for(let level=0;level<4;level++){
+  const radius=13.2-level*.06, y=1.25+level*1.12;
+  const points=[];
+  for(let i=0;i<=90;i++){
+    const a=Math.PI+(Math.PI*i/90);
+    points.push(new THREE.Vector3(Math.cos(a)*radius,y,Math.sin(a)*radius-1.4));
+  }
+  const curve=new THREE.CatmullRomCurve3(points);
+  const shelf=new THREE.Mesh(new THREE.TubeGeometry(curve,120,.055,8,false),galleryLight);scene.add(shelf);
+  const lipPoints=[];
+  for(let i=0;i<=90;i++){const a=Math.PI+(Math.PI*i/90);lipPoints.push(new THREE.Vector3(Math.cos(a)*(radius-.14),y-.1,Math.sin(a)*(radius-.14)-1.4));}
+  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(lipPoints),holoLineMat));
+}
+// Curved metallic backing wall segments and repeated consumer-tech product displays.
+for(let i=0;i<37;i++){
+ const a=Math.PI+(Math.PI*i/36), x=Math.cos(a)*13.15, z=Math.sin(a)*13.15-1.4;
+ const post=box(.055,4.65,.08,galleryMetal,x,2.55,z);post.rotation.y=-a;
+ for(let level=0;level<4;level++){
+   const y=1.48+level*1.12;
+   const width=.5+(i%3)*.08, height=.35+(i%4)*.12;
+   const productMat=(i+level)%3===0?galleryLight:((i+level)%3===1?galleryDark:black);
+   const p=box(width,height,.22,productMat,x,y+height/2,z+.22);
+   p.rotation.y=-a;
+   // small inset display face
+   const face=box(width*.72,height*.48,.018,(i+level)%2?black:galleryLight,x,y+height*.58,z+.095);face.rotation.y=-a;
+   if((i+level)%4===0){const lens=new THREE.Mesh(new THREE.TorusGeometry(.075,.018,8,24),galleryMetal);lens.position.set(x,y+height*.6,z+.065);scene.add(lens);}
+ }
+}
+// Large elliptical-looking ceiling ring and curved luminous ceiling rim.
+for(const [radius,tube,y,material] of [[14,.09,7.5,galleryMetal],[13.5,.035,7.45,galleryLight],[10.8,.045,7.55,galleryLight]]){
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(radius,tube,10,160),material);ring.rotation.x=Math.PI/2;ring.position.set(0,y,-1.4);scene.add(ring);
+}
+const ceiling=new THREE.Mesh(new THREE.CylinderGeometry(14.2,14.2,.18,96,1,true,Math.PI,Math.PI),galleryDark);ceiling.position.set(0,7.65,-1.4);scene.add(ceiling);
+// Main circular display plinth, with silver body and white concentric floor rings.
+const centerPlinth=new THREE.Mesh(new THREE.CylinderGeometry(3.25,3.45,.62,96),galleryMetal);centerPlinth.position.set(0,.48,-2.2);scene.add(centerPlinth);
+const plinthTop=new THREE.Mesh(new THREE.CylinderGeometry(3.18,3.18,.045,96),galleryLight);plinthTop.position.set(0,.81,-2.2);scene.add(plinthTop);
+for(const r of [4.05,4.65,5.3]){
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.025,8,120),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.7}));
+ ring.rotation.x=Math.PI/2;ring.position.set(0,.04,-2.2);scene.add(ring);
+}
+// Tall central translucent holographic panel, using white/silver instead of blue.
+const holo=new THREE.Mesh(new THREE.PlaneGeometry(3.2,5.2),hologramMat);holo.position.set(0,4.15,-4.6);scene.add(holo);
+function holoRect(w,h,x,y,z){const pts=[[-w/2,-h/2,0],[w/2,-h/2,0],[w/2,h/2,0],[-w/2,h/2,0],[-w/2,-h/2,0]].map(p=>new THREE.Vector3(p[0]+x,p[1]+y,p[2]+z));scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),holoLineMat));}
+holoRect(3.25,5.25,0,4.15,-4.55);
+for(let i=0;i<12;i++){const w=i%4===0?2.3:1.15+(i%5)*.22;const y=5.85-i*.28;const bar=box(w,.025,.018,galleryLight,-.75+w/2,y,-4.5);bar.material=galleryLight;}
+for(let i=0;i<4;i++){const frame=new THREE.Mesh(new THREE.PlaneGeometry(.65,.52),hologramMat);frame.position.set(-.85+i*.58,2.95,-4.55);scene.add(frame);holoRect(.65,.52,-.85+i*.58,2.95,-4.53);}
+\n// Monochrome supermarket display bays: satin-metal frames, floating shelves, white edge lighting
 const shelfMetal=mat(0x777777,.82,.24), shelfBlack=mat(0x171717,.68,.3), shelfWhite=mat(0xe8e8e8,.32,.22,0x666666,.18);
 for(const side of [-1,1]){
   const sx=side*7.2, backZ=-7.1;
@@ -85,8 +138,8 @@ const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();let targetX=0,target
 function pointerMove(e){pointer.x=e.clientX/innerWidth*2-1;pointer.y=-(e.clientY/innerHeight)*2+1;if(dragging){targetY+=(e.clientX-lastX)*.004;targetX+=(e.clientY-lastY)*.002;targetX=THREE.MathUtils.clamp(targetX,-.16,.16)}lastX=e.clientX;lastY=e.clientY}
 renderer.domElement.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture?.(e.pointerId)});renderer.domElement.addEventListener('pointerup',()=>dragging=false);renderer.domElement.addEventListener('pointercancel',()=>dragging=false);renderer.domElement.addEventListener('pointermove',pointerMove);
 renderer.domElement.addEventListener('click',()=>{ray.setFromCamera(pointer,camera);const hits=ray.intersectObjects(interactives,true);if(hits.length){let o=hits[0].object;while(o.parent&&!o.userData.title)o=o.parent;if(o.userData.title){toast.textContent=o.userData.title+' · Explore the featured listing';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400)}}});
-document.querySelectorAll('#enterTop,#exploreBtn').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();targetY=0;targetX=0;camera.position.set(0,2.5,9);toast.textContent='Welcome to the showroom · Drag to look around';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}));
-let clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();rotY+=(targetY-rotY)*.035;rotX+=(targetX-rotX)*.035;camera.position.x=Math.sin(rotY)*12.8;camera.position.z=Math.cos(rotY)*12.8;camera.position.y=3.1+rotX*5;camera.lookAt(0,2.05,-2.5);interactives.forEach((b,i)=>{b.position.y=b.userData.baseY+Math.sin(t*1.1+b.userData.phase)*.1;b.rotation.y+=(Math.sin(t*.35+i)*.025+b.rotation.y)*.002});orbs.forEach(o=>{if(o.particle){o.m.position.y=o.base+Math.sin(t*o.speed+o.a)*.12}else{o.m.position.x=Math.cos(o.a+t*o.speed)*o.r;o.m.position.z=-3+Math.sin(o.a+t*o.speed)*o.r*.7;o.m.position.y=o.base+Math.sin(t*1.2+o.a)*.22}});renderer.render(scene,camera)}
+document.querySelectorAll('#enterTop,#exploreBtn').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();targetY=0;targetX=0;camera.position.set(0,5.4,20.5);toast.textContent='Welcome to the showroom · Drag to look around';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}));
+let clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();rotY+=(targetY-rotY)*.035;rotX+=(targetX-rotX)*.035;camera.position.x=Math.sin(rotY)*20.5;camera.position.z=Math.cos(rotY)*20.5;camera.position.y=5.4+rotX*5;camera.lookAt(0,3.1,-3.5);interactives.forEach((b,i)=>{b.position.y=b.userData.baseY+Math.sin(t*1.1+b.userData.phase)*.1;b.rotation.y+=(Math.sin(t*.35+i)*.025+b.rotation.y)*.002});orbs.forEach(o=>{if(o.particle){o.m.position.y=o.base+Math.sin(t*o.speed+o.a)*.12}else{o.m.position.x=Math.cos(o.a+t*o.speed)*o.r;o.m.position.z=-3+Math.sin(o.a+t*o.speed)*o.r*.7;o.m.position.y=o.base+Math.sin(t*1.2+o.a)*.22}});renderer.render(scene,camera)}
 animate();loading.classList.add('hide');setTimeout(()=>loading.remove(),650);
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight)});
 </script>
