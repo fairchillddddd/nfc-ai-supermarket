@@ -14,6 +14,35 @@ header{border-bottom:1px solid var(--line);background:#fff}.nav{min-height:82px;
 .how{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}.steps{list-style:none;padding:0;margin:0;border-top:1px solid var(--black)}.steps li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}.steps b{font-size:10px;letter-spacing:.1em;padding-top:2px}.steps strong{display:block;font:700 15px var(--display);margin-bottom:3px}.steps span{font-size:12px;color:var(--quiet)}.about{background:var(--black);color:white;padding:58px 0}.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:58px;align-items:start}.about h2{font:700 40px/1.02 var(--display);letter-spacing:-.055em;margin:0}.about p{max-width:620px;color:var(--white);font-size:14px}.about .small{font-size:11px;color:var(--white);margin-bottom:0}.footer{padding:26px 0;display:flex;justify-content:space-between;gap:18px;font-size:10px;color:var(--quiet)}
 @media(max-width:760px){.wrap{width:min(100% - 32px,580px)}.nav{min-height:68px}.brand img{width:190px}.brand-name{font-size:18px}.navlinks{gap:15px}.navlinks a:not(.nav-cta){display:none}.hero{grid-template-columns:1fr;gap:30px;padding:53px 0}.hero-board{min-height:300px}.board-heading{font-size:25px;max-width:230px}.section{padding:49px 0}.section-head{display:block}.section-head p{margin-top:12px}.categories{grid-template-columns:1fr 1fr}.category{min-height:145px;padding:16px}.category strong{font-size:19px}.featured{grid-template-columns:1fr}.book-visual{min-height:245px}.featured-copy{padding:24px}.find-row{align-items:flex-start;flex-direction:column}.find a{width:100%;text-align:center}.how,.about-grid{grid-template-columns:1fr;gap:24px}.about{padding:46px 0}.about h2{font-size:35px}.footer{display:block}.footer span{display:block;margin:6px 0}}
 @media(max-width:390px){.brand img{width:158px}.brand-name{font-size:16px}.nav-cta{padding:8px 10px!important;font-size:10px!important}.categories{grid-template-columns:1fr}.category{min-height:125px}.box{padding:9px}.box strong{font-size:15px}.board-heading{font-size:22px;max-width:205px}}
+
+/* Experimental 3D layer — keeps the original storefront content and links intact. */
+:root{--electric:#2563eb;--depth:0 24px 55px rgba(0,0,0,.13)}
+.hero-board{perspective:1100px;transform-style:preserve-3d;transition:transform .35s ease,box-shadow .35s ease;box-shadow:var(--depth)}
+.hero-board:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 76% 18%,rgba(37,99,235,.12),transparent 36%);z-index:0}
+.hero-board .board-heading{transform:translateZ(28px)}
+.shelf{transform:rotateX(7deg) translateZ(12px);transform-style:preserve-3d;border-bottom-color:var(--electric)}
+.box{position:relative;transform:translateZ(12px);box-shadow:5px 7px 0 rgba(0,0,0,.10);transition:transform .3s ease,box-shadow .3s ease}
+.box:nth-child(1){transform:translateZ(16px) rotateY(5deg)}
+.box:nth-child(2){transform:translateZ(34px) rotateY(-2deg);box-shadow:8px 10px 0 rgba(37,99,235,.25)}
+.box:nth-child(3){transform:translateZ(10px) rotateY(-6deg)}
+.box:nth-child(2) small{color:#9fc0ff}
+.box:hover{z-index:3;transform:translateY(-8px) translateZ(42px) rotateY(0);box-shadow:0 16px 28px rgba(0,0,0,.18)}
+.book-visual{perspective:1000px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 46%,#e8efff 0, #f8f9fb 43%,#fff 74%)}
+.book-visual:before{content:"";position:absolute;width:185px;height:28px;left:50%;bottom:30px;transform:translateX(-50%);border-radius:50%;background:rgba(0,0,0,.14);filter:blur(12px)}
+.book{position:relative;z-index:1;transform:rotateY(-18deg) rotateX(3deg) translateZ(28px);transform-style:preserve-3d;box-shadow:10px 12px 0 #111,16px 19px 28px rgba(0,0,0,.19);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.book:after{content:"";position:absolute;top:4px;bottom:4px;right:-10px;width:10px;background:repeating-linear-gradient(90deg,#d7d7d7 0 1px,#f8f8f8 1px 3px);transform:skewY(0deg);transform-origin:left}
+.book:hover{transform:rotateY(-7deg) rotateX(0) translateY(-7px) translateZ(38px);box-shadow:8px 14px 0 #111,20px 25px 35px rgba(0,0,0,.2)}
+.featured{box-shadow:0 18px 45px rgba(0,0,0,.045);transform-style:preserve-3d}
+.button{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.button:hover{background:var(--electric);box-shadow:0 8px 20px rgba(37,99,235,.22);transform:translateY(-2px)}
+.category{transform-style:preserve-3d}
+.category:hover{box-shadow:0 12px 24px rgba(0,0,0,.12);border-color:var(--electric)}
+.category .arrow{transition:transform .2s ease}
+.category:hover .arrow{transform:translate(3px,-3px);color:#9fc0ff}
+.section-head h2,.plain-title{ text-wrap:balance}
+@media(max-width:760px){.hero-board{box-shadow:0 15px 30px rgba(0,0,0,.09)}.book{transform:rotateY(-12deg) translateZ(15px)}.box:nth-child(2){transform:translateZ(20px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -28,5 +57,29 @@ header{border-bottom:1px solid var(--line);background:#fff}.nav{min-height:82px;
 <section class="about" id="about"><div class="wrap about-grid"><h2>A digital pharmacy<br>inside BIZ17.</h2><div><p>N.FC AI SUPERMARKET is BIZ17’s digital-product shop: a clear place to find practical guides, prompts and templates. Browse by task, check what’s included, and choose what fits your needs.</p><p class="small">Products are educational and productivity resources. They do not promise a particular business, financial, health or personal result.</p></div></div></section>
 </main>
 <footer class="wrap footer"><span>N.FC AI SUPERMARKET · A BIZ17 digital-product shop</span><span>Browse&nbsp; · &nbsp;Featured&nbsp; · &nbsp;About</span><span>Support and policy links must be confirmed before launch.</span></footer>
+
+
+<script>
+(() => {
+  const board = document.querySelector('.hero-board');
+  if (board && window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    board.addEventListener('pointermove', (event) => {
+      const r = board.getBoundingClientRect();
+      const x = (event.clientX - r.left) / r.width - .5;
+      const y = (event.clientY - r.top) / r.height - .5;
+      board.style.transform = 'rotateY(' + (x * 5).toFixed(2) + 'deg) rotateX(' + (-y * 4).toFixed(2) + 'deg)';
+    });
+    board.addEventListener('pointerleave', () => { board.style.transform = ''; });
+  }
+  const revealItems = document.querySelectorAll('.category,.featured,.steps li,.about-grid');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealItems.forEach((el) => { el.style.opacity = '0'; el.style.transform += ' translateY(12px)'; el.style.transition = 'opacity .55s ease, transform .55s ease'; });
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = entry.target.style.transform.replace(' translateY(12px)',''); observer.unobserve(entry.target); }
+    }), {threshold: .12});
+    revealItems.forEach((el) => observer.observe(el));
+  }
+})();
+</script>
 
 </body></html>
