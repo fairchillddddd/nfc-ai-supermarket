@@ -22,6 +22,7 @@
     .concierge-dot { width: 5px; height: 5px; border-radius: 50%; background: #d8bd7d; box-shadow: 0 0 9px #e3c477; }
 
     .reference { display: block; width: 100%; height: auto; transform: translate3d(var(--move-x), var(--move-y), 0) scale(1.075); transform-origin: center; transition: transform 250ms cubic-bezier(.2,.7,.2,1), filter 700ms ease; will-change: transform; }
+    .background-finish { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 48%, transparent 34%, #0d1722a6 100%), linear-gradient(180deg, #14233336 0%, transparent 24%, transparent 76%, #111c2852 100%), radial-gradient(ellipse at 50% 2%, #e7d2a722, transparent 42%); mix-blend-mode: multiply; opacity: .36; }
     .welcome-copy { position: absolute; z-index: 3; left: 25.7%; top: 51.5%; width: 27.8%; height: 21.5%; display: flex; flex-direction: column; justify-content: center; gap: clamp(5px, .75vw, 10px); padding: 1.2% 1.45%; overflow: hidden; border: 1px solid #d8edf28f; border-radius: clamp(10px, 1.4vw, 20px); color: #fff; background: linear-gradient(118deg, #101720ed, #25333bdc 72%, #21313bcc); box-shadow: inset 0 1px #ffffff38, 0 10px 36px #08121c50, 0 0 20px #96eaff30; backdrop-filter: blur(14px); line-height: 1.2; pointer-events: none; }
     .welcome-title { font: 500 clamp(9px, 1.18vw, 17px)/1.32 Inter, Arial, sans-serif; letter-spacing: .005em; text-shadow: 0 1px 8px #080c10a3; }
     .welcome-title strong { display: block; margin-top: 1px; font-weight: 600; }
@@ -117,6 +118,7 @@
       <div class="brand-lockup"><span class="brand-monogram">N.FC</span><span class="brand-copy"><span class="brand-name">N.FC AI SUPERMARKET</span><span class="brand-caption">A MORE INTELLIGENT WAY TO EXPLORE</span></span></div>
     </header>
     <img class="reference" src="/assets/natha-showroom-reference.jpg" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
+    <div class="background-finish" aria-hidden="true"></div>
     <div class="welcome-copy" aria-label="My name is Natha. Welcome to N.FC AI SUPERMARKET. Your AI-powered digital product store. Discover, explore, and upgrade your potential.">
       <div class="welcome-title">My name is Natha,<strong>welcome to N.FC AI SUPERMARKET.</strong></div>
       <div class="welcome-subtitle">Your AI-powered digital product store.<br>Discover, explore, and upgrade your potential.</div>
