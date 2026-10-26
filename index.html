@@ -22,6 +22,16 @@
     .spark.b { left: 63%; top: 35%; animation-delay: -1.8s; }
     .spark.c { left: 72%; top: 56%; animation-delay: -.2s; }
     .spark.d { left: 39%; top: 62%; animation-delay: -2.1s; }
+    .cube-spot { --cube-size: clamp(46px, 6.2vw, 100px); position: absolute; left: 50%; top: 38%; width: var(--cube-size); height: var(--cube-size); transform: translate(-50%, -50%); perspective: 700px; }
+    .holo-cube { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: cube-turn 11s linear infinite; }
+    .cube-face { position: absolute; inset: 0; display: grid; place-items: center; border: 1px solid #c8f5ffcc; background: linear-gradient(145deg, #c5f6ff3d, #5bbbe32b); color: #fff; box-shadow: inset 0 0 14px #7ce7ff66, 0 0 14px #7ce7ff55; font: 800 clamp(8px, 1vw, 14px)/1 Inter, Arial, sans-serif; letter-spacing: .04em; text-shadow: 0 0 7px #49d9ff; backface-visibility: visible; }
+    .cube-face.front { transform: translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+    @keyframes cube-turn { from { transform: rotateX(-18deg) rotateY(0deg); } to { transform: rotateX(342deg) rotateY(360deg); } }
     @keyframes orbit-one { from { transform: rotateX(71deg) rotateZ(0deg); } to { transform: rotateX(71deg) rotateZ(360deg); } }
     @keyframes orbit-two { from { transform: rotateX(67deg) rotateY(18deg) rotateZ(360deg); } to { transform: rotateX(67deg) rotateY(18deg) rotateZ(0deg); } }
     @keyframes orbit-three { from { transform: rotateX(78deg) rotateY(-25deg) rotateZ(0deg); } to { transform: rotateX(78deg) rotateY(-25deg) rotateZ(360deg); } }
@@ -36,17 +46,19 @@
     @media (max-width: 520px) {
       .reference { transform: scale(1.02); }
       .orbit-stage { width: 52%; height: 27%; top: 73%; }
+      .cube-spot { --cube-size: clamp(42px, 9vw, 64px); top: 38%; }
       .sound-control { right: 8px; bottom: 8px; gap: 4px; }
       .sound-button { padding: 8px 11px; font-size: 11px; }
       .voice-status { max-width: 68vw; font-size: 10px; }
     }
-    @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; transform: none; } .orbit, .spark { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; transform: none; } .orbit, .spark, .holo-cube { animation: none !important; } }
   </style>
 </head>
 <body>
   <main class="showroom" aria-label="N.FC AI SUPERMARKET showroom">
     <img class="reference" src="/assets/natha-showroom-reference.jpg" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
     <div class="depth-scene" aria-hidden="true">
+      <div class="cube-spot"><div class="holo-cube"><span class="cube-face front">N.FC</span><span class="cube-face back">N.FC</span><span class="cube-face right">AI</span><span class="cube-face left">AI</span><span class="cube-face top">✦</span><span class="cube-face bottom">✦</span></div></div>
       <div class="orbit-stage"><span class="orbit one"></span><span class="orbit two"></span><span class="orbit three"></span></div>
       <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i><i class="spark d"></i>
     </div>
