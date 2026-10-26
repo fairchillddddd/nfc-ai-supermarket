@@ -1,32 +1,285 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>N.FC AI SUPERMARKET — Storefront Design Preview</title>
-<style>
-:root{--black:#000;--white:#fff;--fog:#fff;--line:#000;--quiet:#000;--display:"Trebuchet MS","Arial Rounded MT Bold",Arial,sans-serif;--body:Arial,Helvetica,sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--white);color:var(--black);font-family:var(--body);line-height:1.55}a{color:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}.preview{background:var(--black);color:var(--white);text-align:center;padding:8px 14px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
-header{border-bottom:1px solid var(--line);background:#fff}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;text-decoration:none}.brand img{display:block;width:226px;height:auto}.brand-name{font:700 21px/1 var(--display);letter-spacing:-.055em;text-transform:uppercase}.brand-name span{display:block;font:700 9px/1.5 var(--body);letter-spacing:.14em;margin-top:6px}.navlinks{display:flex;align-items:center;gap:30px}.navlinks a{text-decoration:none;font-size:13px;font-weight:700}.navlinks a:hover{text-decoration:underline;text-underline-offset:5px}.nav-cta{border:1px solid var(--black);padding:10px 15px!important}
-.hero{padding:76px 0 68px;display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}.kicker{font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:700;color:var(--quiet)}h1,h2,h3,p{margin-top:0}h1{font:700 clamp(48px,6.5vw,78px)/.99 var(--display);letter-spacing:-.06em;max-width:650px;margin:17px 0 22px}h1 em{font-style:normal;text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}.lead{font-size:17px;line-height:1.7;max-width:490px;color:var(--black);margin-bottom:27px}.actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:14px;padding:14px 19px;background:var(--black);color:var(--white);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.06em}.button:hover{background:var(--black)}.text-link{font-size:13px;font-weight:700;text-underline-offset:4px}.hero-board{min-height:335px;background:var(--fog);border:1px solid var(--black);padding:24px;position:relative;display:flex;align-items:end;overflow:hidden}.board-tag{position:absolute;left:23px;top:20px;font-size:10px;font-weight:700;letter-spacing:.15em}.board-heading{position:absolute;left:23px;top:54px;max-width:300px;font:700 29px/1.1 var(--display);letter-spacing:-.04em}.shelf{position:relative;z-index:1;width:100%;height:147px;border-bottom:4px solid var(--black);display:flex;align-items:end;justify-content:center;gap:9px}.box{height:77%;width:31%;border:2px solid var(--black);background:white;padding:13px;display:flex;flex-direction:column;justify-content:space-between}.box:nth-child(2){height:100%;background:var(--black);color:white}.box small{font-size:8px;font-weight:700;letter-spacing:.1em}.box strong{font:700 18px/1.05 var(--display);letter-spacing:-.03em}.box span{font-size:8px;text-transform:uppercase;letter-spacing:.1em;border-top:1px solid currentColor;padding-top:7px}.board-note{position:absolute;right:23px;top:22px;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--quiet)}
-.section{padding:68px 0;border-top:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:26px}.section-head h2,.plain-title{font:700 clamp(32px,4vw,45px)/1.08 var(--display);letter-spacing:-.055em;margin:7px 0 0}.section-head p{max-width:365px;color:var(--quiet);font-size:13px;margin:0}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.category{min-height:158px;padding:20px;border:1px solid var(--black);display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:transform .18s,background .18s,color .18s}.category:hover{transform:translateY(-3px);background:var(--black);color:var(--white)}.category .num{font-size:9px;font-weight:700;letter-spacing:.14em}.category strong{font:700 23px/1.08 var(--display);letter-spacing:-.04em;max-width:260px}.category .arrow{align-self:end;font-size:20px;line-height:1}
-.find{background:var(--black);color:white;padding:33px 0}.find-row{display:flex;justify-content:space-between;align-items:center;gap:24px}.find h2{font:700 25px/1.12 var(--display);letter-spacing:-.04em;margin:0}.find p{color:var(--white);margin:5px 0 0;font-size:12px}.find a{background:white;color:var(--black);padding:12px 15px;text-decoration:none;font-size:11px;font-weight:700;white-space:nowrap}
-.featured{display:grid;grid-template-columns:.85fr 1.15fr;border:1px solid var(--black)}.book-visual{min-height:285px;background:var(--fog);display:flex;align-items:center;justify-content:center;padding:25px}.book{width:150px;height:205px;background:white;border:2px solid var(--black);padding:17px;box-shadow:7px 7px 0 var(--black);display:flex;flex-direction:column;justify-content:space-between}.book small{font-weight:700;font-size:8px;letter-spacing:.12em}.book strong{font:700 27px/.98 var(--display);letter-spacing:-.05em}.book span{border-top:1px solid var(--black);padding-top:7px;font-size:8px;text-transform:uppercase;letter-spacing:.08em}.featured-copy{padding:34px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--black);padding:5px 8px}.featured-copy h3{font:700 32px/1.05 var(--display);letter-spacing:-.05em;margin:15px 0 10px}.featured-copy p{font-size:14px;color:var(--black);max-width:490px;margin-bottom:18px}.features{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.features span{font-size:10px;border:1px solid var(--line);padding:6px 9px}.featured-copy .button{margin-top:2px}
-.how{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}.steps{list-style:none;padding:0;margin:0;border-top:1px solid var(--black)}.steps li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}.steps b{font-size:10px;letter-spacing:.1em;padding-top:2px}.steps strong{display:block;font:700 15px var(--display);margin-bottom:3px}.steps span{font-size:12px;color:var(--quiet)}.about{background:var(--black);color:white;padding:58px 0}.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:58px;align-items:start}.about h2{font:700 40px/1.02 var(--display);letter-spacing:-.055em;margin:0}.about p{max-width:620px;color:var(--white);font-size:14px}.about .small{font-size:11px;color:var(--white);margin-bottom:0}.footer{padding:26px 0;display:flex;justify-content:space-between;gap:18px;font-size:10px;color:var(--quiet)}
-@media(max-width:760px){.wrap{width:min(100% - 32px,580px)}.nav{min-height:68px}.brand img{width:190px}.brand-name{font-size:18px}.navlinks{gap:15px}.navlinks a:not(.nav-cta){display:none}.hero{grid-template-columns:1fr;gap:30px;padding:53px 0}.hero-board{min-height:300px}.board-heading{font-size:25px;max-width:230px}.section{padding:49px 0}.section-head{display:block}.section-head p{margin-top:12px}.categories{grid-template-columns:1fr 1fr}.category{min-height:145px;padding:16px}.category strong{font-size:19px}.featured{grid-template-columns:1fr}.book-visual{min-height:245px}.featured-copy{padding:24px}.find-row{align-items:flex-start;flex-direction:column}.find a{width:100%;text-align:center}.how,.about-grid{grid-template-columns:1fr;gap:24px}.about{padding:46px 0}.about h2{font-size:35px}.footer{display:block}.footer span{display:block;margin:6px 0}}
-@media(max-width:390px){.brand img{width:158px}.brand-name{font-size:16px}.nav-cta{padding:8px 10px!important;font-size:10px!important}.categories{grid-template-columns:1fr}.category{min-height:125px}.box{padding:9px}.box strong{font-size:15px}.board-heading{font-size:22px;max-width:205px}}
-</style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dfe2e5">
+  <title>N.FC AI SUPERMARKET — Welcome to the Future</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: #030303; font-family: Inter, Arial, sans-serif; }
+    .showroom { --tilt-x: 0deg; --tilt-y: 0deg; --move-x: 0px; --move-y: 0px; position: relative; width: 100%; max-width: 1920px; margin: 0 auto; line-height: 0; overflow: hidden; isolation: isolate; perspective: 1400px; background: #030303; cursor: grab; touch-action: pan-y; }
+    .showroom.is-dragging { cursor: grabbing; }
+    .showroom::before { content: ""; position: absolute; z-index: 2; inset: 14px; border: 1px solid #ffffff58; border-radius: 3px; pointer-events: none; box-shadow: inset 0 0 60px #10182222, 0 0 0 1px #d7c49b22; }
+    .premium-header { position: absolute; z-index: 4; top: clamp(2px, .35vw, 5px); left: clamp(30px, 4vw, 64px); right: clamp(30px, 4vw, 64px); display: flex; align-items: center; justify-content: space-between; line-height: 1; pointer-events: none; }
+    .brand-lockup { display: flex; align-items: center; gap: 11px; padding: 6px 13px 6px 6px; border: 1px solid #ffffff46; border-radius: 999px; color: #f7f4ed; background: linear-gradient(125deg, #111a20c9, #252d30a8); box-shadow: 0 8px 24px #070b1077, inset 0 1px #ffffff24; backdrop-filter: blur(14px); text-shadow: 0 2px 15px #0008; }
+    .brand-monogram { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #e9dfc1b3; border-radius: 50%; color: #f2e3b9; font: 600 10px/1 Inter, Arial, sans-serif; letter-spacing: .08em; }
+    .brand-copy { display: grid; gap: 5px; }
+    .brand-name { font: 600 11px/1 Inter, Arial, sans-serif; letter-spacing: .2em; }
+    .brand-caption { color: #f4f2edbb; font: 500 7px/1 Inter, Arial, sans-serif; letter-spacing: .19em; }
+    .concierge-label { display: flex; align-items: center; gap: 8px; margin-left: auto; margin-right: 14px; color: #fffde7; font: 500 9px/1 Inter, Arial, sans-serif; letter-spacing: .16em; text-shadow: 0 2px 12px #000; }
+    .concierge-dot { width: 5px; height: 5px; border-radius: 50%; background: #d8bd7d; box-shadow: 0 0 9px #e3c477; }
+
+    .reference { display: block; width: 100%; height: auto; filter: none; transform: none; transform-origin: center; transition: none; will-change: transform; }
+    .background-finish { position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(180deg, #00000020 0%, #00000026 28%, #00000052 100%), radial-gradient(ellipse at 50% 50%, transparent 22%, #00000088 100%); mix-blend-mode: multiply; opacity: .98; }
+    .welcome-copy { position: absolute; z-index: 3; left: 25.7%; top: 51.5%; width: 27.8%; height: 21.5%; display: flex; flex-direction: column; justify-content: center; gap: clamp(5px, .75vw, 10px); padding: 1.2% 1.45%; overflow: hidden; border: 1px solid #d8edf28f; border-radius: clamp(10px, 1.4vw, 20px); color: #fff; background: linear-gradient(118deg, #101720ed, #25333bdc 72%, #21313bcc); box-shadow: inset 0 1px #ffffff38, 0 10px 36px #08121c50, 0 0 20px #ffffff22; backdrop-filter: blur(14px); line-height: 1.2; pointer-events: none; }
+    .welcome-title { font: 500 clamp(9px, 1.18vw, 17px)/1.32 Inter, Arial, sans-serif; letter-spacing: .005em; text-shadow: 0 1px 8px #080c10a3; }
+    .welcome-title strong { display: block; margin-top: 1px; font-weight: 600; }
+    .welcome-subtitle { color: #f4f7f9d9; font: 400 clamp(6px, .68vw, 9px)/1.45 Inter, Arial, sans-serif; letter-spacing: .01em; }
+    .welcome-arrow { position: absolute; right: 7%; bottom: 18%; display: grid; place-items: center; width: clamp(17px, 2.15vw, 28px); aspect-ratio: 1; border: 1px solid #ffffffba; border-radius: 50%; color: #fff; font: 400 clamp(10px, 1.1vw, 15px)/1 Arial, sans-serif; box-shadow: 0 0 12px #ffffff55, inset 0 0 8px #ffffff33; }
+    .depth-scene { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; transform: translate3d(var(--move-x), var(--move-y), 0) scale(1.075); transform-style: preserve-3d; transition: transform 250ms cubic-bezier(.2,.7,.2,1); }
+    .orbit-stage { position: absolute; left: 50%; top: 73%; width: 43%; height: 27%; transform: translate(-50%, -50%); transform-style: preserve-3d; }
+    .orbit { position: absolute; inset: 0; border: 1px solid #ffffff99; border-radius: 50%; box-shadow: 0 0 9px #ffffff66, inset 0 0 12px #ffffff33; transform-style: preserve-3d; }
+    .orbit.one { animation: orbit-one 13s linear infinite; }
+    .orbit.two { inset: 9% -7%; border-color: #fff9; animation: orbit-two 17s linear infinite; }
+    .orbit.three { inset: 20% 12%; border-style: dashed; border-color: #ffffff88; animation: orbit-three 22s linear infinite; }
+    .spark { position: absolute; width: clamp(4px, .55vw, 9px); aspect-ratio: 1; border-radius: 50%; background: #ffffff; box-shadow: 0 0 8px 3px #ffffff99, 0 0 22px 6px #ffffff66; animation: sparkle 2.8s ease-in-out infinite alternate; }
+    .spark.a { left: 31%; top: 41%; animation-delay: -.7s; }
+    .spark.b { left: 63%; top: 35%; animation-delay: -1.8s; }
+    .spark.c { left: 72%; top: 56%; animation-delay: -.2s; }
+    .spark.d { left: 39%; top: 62%; animation-delay: -2.1s; }
+    .shelf-sweep { position: absolute; left: -22%; width: 18%; height: clamp(2px, .32vw, 5px); border-radius: 50%; background: linear-gradient(90deg, transparent, #ffffff88 35%, #fff 50%, #ffffff77 68%, transparent); box-shadow: 0 0 7px 1px #ffffff66; animation: shelf-glide 8s linear infinite; }
+    .shelf-sweep.one { top: 29%; }
+    .shelf-sweep.two { top: 40%; animation-delay: -2.7s; animation-duration: 9.5s; }
+    .shelf-sweep.three { top: 51%; animation-delay: -5.2s; animation-duration: 10.5s; }
+    @keyframes shelf-glide { from { transform: translateX(0) scaleX(.72); opacity: 0; } 12% { opacity: .85; } 82% { opacity: .65; } to { transform: translateX(800%) scaleX(1.15); opacity: 0; } }
+    .animated-book { position: absolute; width: clamp(15px, 1.9vw, 28px); height: clamp(26px, 3.2vw, 45px); perspective: 500px; transform-style: preserve-3d; opacity: .72; filter: drop-shadow(1px 2px 3px #10182068); }
+    .animated-book::before, .animated-book::after { content: ""; position: absolute; inset: 0; display: grid; place-items: center; border: 1px solid #d8f8ff; border-radius: 2px; backface-visibility: hidden; color: #fff; font: 800 clamp(5px, .55vw, 8px)/1 Inter, Arial, sans-serif; letter-spacing: .02em; text-shadow: 0 0 6px #60dfff; box-shadow: inset 0 0 8px #8ceaff44, 0 0 5px #68deff62; }
+    .animated-book::before { content: "N.FC"; background: linear-gradient(145deg, #d9f9ffcc, #2b8bb7aa 35%, #082b58ee 100%); transform: translateZ(.7px); }
+    .animated-book::after { content: "AI"; background: linear-gradient(145deg, #fff, #7dcce5 35%, #174a78); transform: rotateY(180deg) translateZ(.7px); }
+    .animated-book.left-one { left: 7%; top: 29%; animation: book-turn 5.8s ease-in-out infinite; }
+    .animated-book.left-two { left: 18%; top: 40%; animation: book-turn 7.1s ease-in-out -2s infinite; }
+    .animated-book.left-three { left: 9%; top: 51%; animation: book-turn 6.4s ease-in-out -4s infinite; }
+    .animated-book.right-one { left: 83%; top: 29%; animation: book-turn 6.3s ease-in-out -1s infinite; }
+    .animated-book.right-two { left: 92%; top: 40%; animation: book-turn 7.6s ease-in-out -3.2s infinite; }
+    .animated-book.right-three { left: 86%; top: 51%; animation: book-turn 5.5s ease-in-out -2.4s infinite; }
+    @keyframes book-turn { 0%, 14% { transform: rotateY(0deg) translateZ(0); } 42% { transform: rotateY(180deg) translateZ(12px) scale(1.08); } 70%, 100% { transform: rotateY(360deg) translateZ(0); } }
+    .cube-spot { --cube-size: clamp(46px, 6.2vw, 100px); position: absolute; left: 50%; top: 38%; width: var(--cube-size); height: var(--cube-size); transform: translate(-50%, -50%); perspective: 700px; }
+    .holo-cube { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: cube-turn 11s linear infinite; }
+    .cube-face { position: absolute; inset: 0; display: grid; place-items: center; border: 1px solid #ffffffcc; background: linear-gradient(145deg, #ffffff24, #ffffff18); color: #fff; box-shadow: inset 0 0 14px #ffffff55, 0 0 14px #ffffff44; font: 800 clamp(8px, 1vw, 14px)/1 Inter, Arial, sans-serif; letter-spacing: .04em; text-shadow: 0 0 7px #ffffff; backface-visibility: visible; }
+    .cube-face.front { transform: translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2)); }
+    .palm-orb { --orb-size: clamp(25px, 3.8vw, 58px); position: absolute; left: 18.5%; top: 63%; width: var(--orb-size); aspect-ratio: 1; transform: translate(-50%, -50%); border: 1px solid #c4f8ff; border-radius: 50%; background: radial-gradient(circle at 32% 25%, #fff 0 4%, #eeeeee 8%, #bbbbbb 24%, #777777 48%, #333333 72%, #020c30 100%); box-shadow: inset -5px -7px 12px #020a3c9c, inset 4px 3px 9px #ffffffc2, 0 0 12px 4px #ffffff99, 0 0 33px 9px #ffffff66; animation: orb-hover 2.5s ease-in-out infinite alternate; }
+    .palm-orb::before { content: ""; position: absolute; inset: -27% -46%; border: 1px solid #adf5ffdc; border-radius: 50%; transform: rotateX(68deg) rotateZ(-18deg); box-shadow: 0 0 7px #ffffff, inset 0 0 6px #55dcff66; animation: orb-ring 4s linear infinite; }
+    .palm-orb::after { content: ""; position: absolute; top: 12%; left: 20%; width: 23%; height: 14%; border-radius: 50%; background: #fff; filter: blur(2px); opacity: .9; }
+    @keyframes orb-hover { from { translate: 0 3px; scale: .96; } to { translate: 0 -4px; scale: 1.04; } }
+    @keyframes orb-ring { from { rotate: 0deg; } to { rotate: 360deg; } }
+    @keyframes cube-turn { from { transform: rotateX(-18deg) rotateY(0deg); } to { transform: rotateX(342deg) rotateY(360deg); } }
+    @keyframes orbit-one { from { transform: rotateX(71deg) rotateZ(0deg); } to { transform: rotateX(71deg) rotateZ(360deg); } }
+    @keyframes orbit-two { from { transform: rotateX(67deg) rotateY(18deg) rotateZ(360deg); } to { transform: rotateX(67deg) rotateY(18deg) rotateZ(0deg); } }
+    @keyframes orbit-three { from { transform: rotateX(78deg) rotateY(-25deg) rotateZ(0deg); } to { transform: rotateX(78deg) rotateY(-25deg) rotateZ(360deg); } }
+    @keyframes sparkle { from { opacity: .35; scale: .7; } to { opacity: 1; scale: 1.25; } }
+    .showroom::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at var(--light-x, 50%) var(--light-y, 45%), #ffffff18, transparent 45%); mix-blend-mode: screen; }
+    .energy-wave { position: absolute; z-index: 1; top: -35%; left: -24%; width: 14%; height: 170%; pointer-events: none; transform: skewX(-24deg); background: linear-gradient(90deg, transparent, #ffffff08 25%, #ffffff30 50%, #ffffff08 72%, transparent); filter: blur(6px); animation: energy-pass 15s ease-in-out infinite; }
+    @keyframes energy-pass { 0%, 12% { left: -24%; opacity: 0; } 25% { opacity: .8; } 64% { opacity: .55; } 88%, 100% { left: 110%; opacity: 0; } }
+    .showroom.is-speaking .palm-orb { animation-duration: 1.1s; filter: saturate(1.4) brightness(1.2); }
+    .showroom.is-speaking .holo-cube { animation-duration: 3.8s; }
+    .showroom.is-speaking .orbit { box-shadow: 0 0 15px #72dfffaa, inset 0 0 18px #72dfff77; }
+    .sound-control { position: absolute; top: clamp(10px, 1.1vw, 16px); right: clamp(30px, 4vw, 64px); z-index: 5; display: grid; justify-items: end; gap: 7px; line-height: 1.35; pointer-events: none; }
+    .sound-button { border: 1px solid #e8ddbdad; border-radius: 999px; padding: 12px 17px; color: #fffdf5; background: linear-gradient(135deg, #17232be8, #11171be8); font: 600 9px/1 Inter, Arial, sans-serif; letter-spacing: .11em; text-transform: uppercase; cursor: pointer; pointer-events: auto; box-shadow: 0 8px 26px #070b10aa, inset 0 1px #ffffff22; backdrop-filter: blur(14px); transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
+    .sound-button:hover { background: linear-gradient(135deg, #26343beF, #161e23f2); border-color: #fff0c9; transform: translateY(-1px); }
+    .sound-button:focus-visible { outline: 2px solid #e9d69e; outline-offset: 3px; }
+    .voice-status { max-width: min(290px, 74vw); padding: 6px 9px; border-radius: 8px; color: #fff; background: #171a1dcc; font: 12px/1.4 Inter, Arial, sans-serif; text-align: right; }
+    .voice-status:empty { display: none; }
+    @media (max-width: 520px) {
+      .reference, .depth-scene { transform: translate3d(var(--move-x), var(--move-y), 0) scale(1.035); }
+      .welcome-copy { left: 25.2%; top: 51.5%; width: 29%; height: 21.5%; gap: 4px; padding: 1.4% 1.6%; border-radius: 9px; }
+      .welcome-title { font-size: clamp(8px, 2.15vw, 11px); }
+      .welcome-subtitle { font-size: clamp(5px, 1.25vw, 7px); }
+      .welcome-arrow { width: clamp(15px, 3.6vw, 19px); right: 5%; bottom: 13%; font-size: 10px; }
+      .orbit-stage { width: 52%; height: 27%; top: 73%; }
+      .animated-book { width: clamp(13px, 4vw, 20px); height: clamp(23px, 6vw, 34px); }
+      .animated-book.left-two { left: 22%; }
+      .animated-book.right-two { left: 91%; }
+      .cube-spot { --cube-size: clamp(42px, 9vw, 64px); top: 38%; }
+      .palm-orb { --orb-size: clamp(25px, 7vw, 40px); }
+      .showroom::before { inset: 7px; }
+      .premium-header { top: 4px; left: 18px; right: 18px; }
+      .brand-monogram { width: 30px; height: 30px; font-size: 8px; }
+      .brand-lockup { gap: 8px; }
+      .brand-name { font-size: 9px; }
+      .brand-caption { font-size: 6px; }
+      .concierge-label { display: none; }
+      .sound-control { top: 10px; right: 18px; gap: 4px; }
+      .sound-button { padding: 10px 12px; font-size: 8px; }
+      .voice-status { max-width: 68vw; font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; } .energy-wave, .orbit, .spark, .holo-cube, .shelf-sweep, .animated-book, .palm-orb, .palm-orb::before { animation: none !important; } }
+      /* Match the supplied reference artwork exactly: preserve its original color and built-in composition. */
+    .background-finish, .welcome-copy, .energy-wave, .depth-scene, .premium-header, .showroom::after { display: none !important; }
+    .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
+  </style>
 </head>
 <body>
-<div class="preview">N.FC AI SUPERMARKET · DIGITAL GUIDES · PROMPTS · TEMPLATES</div>
-<header><div class="wrap nav"><a class="brand" href="#top" aria-label="N.FC AI SUPERMARKET home"><span class="brand-name">N.FC AI SUPERMARKET<span>YOUR DIGITAL ESSENTIALS</span></span></a><nav class="navlinks" aria-label="Main navigation"><a href="#browse">Browse</a><a href="#featured">Featured</a><a href="#about">About</a><a class="nav-cta" href="#browse">Find a tool&nbsp; ↗</a></nav></div></header>
-<main id="top">
-<section class="wrap hero"><div><div class="kicker">A good place to start</div><h1>Find the right tool for <em>your next step.</em></h1><p class="lead">Browse practical digital guides, prompts and templates. Start with what you need to do, see what’s inside, and choose what fits.</p><div class="actions"><a class="button" href="#browse">Explore the shelves <span aria-hidden="true">↓</span></a><a class="text-link" href="#how">How it works</a></div></div><div class="hero-board"><span class="board-tag">N.FC AI SUPERMARKET&nbsp; / &nbsp;DIGITAL GOODS</span><strong class="board-heading">Useful things.<br>Clear next steps.</strong><span class="board-note">Pick a shelf. Find your fit.</span><div class="shelf"><div class="box"><small>GUIDES</small><strong>Learn it.</strong><span>Read · Apply</span></div><div class="box"><small>TOOLS</small><strong>Make it easier.</strong><span>Use · Adapt</span></div><div class="box"><small>IDEAS</small><strong>Start here.</strong><span>Plan · Try</span></div></div></div></section>
-<section class="section" id="browse"><div class="wrap"><div class="section-head"><div><div class="kicker">Browse by what you need</div><h2>What are you here to do?</h2></div><p>Choose a shelf to see resources for that kind of task. Product pages should clearly show what you get before you buy.</p></div><div class="categories"><a class="category" href="#featured"><span class="num">01&nbsp; / &nbsp;MAKE</span><strong>Create content and marketing</strong><span class="arrow" aria-hidden="true">↗</span></a><a class="category" href="#featured"><span class="num">02&nbsp; / &nbsp;ORGANIZE</span><strong>Get everyday work in order</strong><span class="arrow" aria-hidden="true">↗</span></a><a class="category" href="#featured"><span class="num">03&nbsp; / &nbsp;LEARN</span><strong>Explore AI and personal growth</strong><span class="arrow" aria-hidden="true">↗</span></a><a class="category" href="#featured"><span class="num">04&nbsp; / &nbsp;WRITE</span><strong>Find prompts and writing helpers</strong><span class="arrow" aria-hidden="true">↗</span></a><a class="category" href="#featured"><span class="num">05&nbsp; / &nbsp;BUILD</span><strong>Plan a small-business solution</strong><span class="arrow" aria-hidden="true">↗</span></a><a class="category" href="#featured"><span class="num">06&nbsp; / &nbsp;GROW</span><strong>Make space for your next idea</strong><span class="arrow" aria-hidden="true">↗</span></a></div></div></section>
-<section class="find"><div class="wrap find-row"><div><h2>Not sure where to start?</h2><p>Browse all available digital products in one place.</p></div><a href="#featured">See available products&nbsp; ↗</a></div></section>
-<section class="section" id="featured"><div class="wrap"><div class="section-head"><div><div class="kicker">Featured shelf</div><h2>A small step can start here.</h2></div><p>This sample card shows the layout. Confirm the live title, cover, contents and availability before using it on Payhip.</p></div><article class="featured"><div class="book-visual"><div class="book"><small>WORTH · BOOK ONE</small><strong>WHO DEFINES YOUR WORTH?</strong><span>A self-improvement book</span></div></div><div class="featured-copy"><span class="badge">Current store listing · verify details</span><h3>WORTH — Who Defines Your Worth?</h3><p>A self-improvement book and the beginning of a wider series. The product page should make the format, contents and delivery clear before checkout.</p><div class="features"><span>Digital book</span><span>Instant access details to verify</span></div><a class="button" href="https://payhip.com/b/XBZRt" target="_blank" rel="noopener noreferrer">View the book&nbsp; ↗</a></div></article></div></section>
-<section class="section" id="how"><div class="wrap how"><div><div class="kicker">Easy to use</div><h2 class="plain-title">Pick a tool.<br>Put it to work.</h2></div><ol class="steps"><li><b>01</b><div><strong>Choose your task</strong><span>Start with the thing you want help doing.</span></div></li><li><b>02</b><div><strong>Check what’s inside</strong><span>See the file types, contents and requirements before you buy.</span></div></li><li><b>03</b><div><strong>Use it your way</strong><span>Download and adapt the resource to suit your situation.</span></div></li></ol></div></section>
-<section class="about" id="about"><div class="wrap about-grid"><h2>A digital pharmacy<br>inside BIZ17.</h2><div><p>N.FC AI SUPERMARKET is BIZ17’s digital-product shop: a clear place to find practical guides, prompts and templates. Browse by task, check what’s included, and choose what fits your needs.</p><p class="small">Products are educational and productivity resources. They do not promise a particular business, financial, health or personal result.</p></div></div></section>
-</main>
-<footer class="wrap footer"><span>N.FC AI SUPERMARKET · A BIZ17 digital-product shop</span><span>Browse&nbsp; · &nbsp;Featured&nbsp; · &nbsp;About</span><span>Support and policy links must be confirmed before launch.</span></footer>
+  <main class="showroom" aria-label="N.FC AI SUPERMARKET showroom">
+    <header class="premium-header" aria-label="N.FC AI SUPERMARKET">
+      <div class="brand-lockup"><span class="brand-monogram">N.FC</span><span class="brand-copy"><span class="brand-name">N.FC AI SUPERMARKET</span><span class="brand-caption">A MORE INTELLIGENT WAY TO EXPLORE</span></span></div>
+    </header>
+    <img class="reference" src="/assets/B4AC8926-2898-4B33-9BD0-46CF56A3038D.png" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
+    <div class="background-finish" aria-hidden="true"></div>
+    <div class="welcome-copy" aria-label="My name is Natha. Welcome to N.FC AI SUPERMARKET. Your AI-powered digital product store. Discover, explore, and upgrade your potential.">
+      <div class="welcome-title">My name is Natha,<strong>welcome to N.FC AI SUPERMARKET.</strong></div>
+      <div class="welcome-subtitle">Your AI-powered digital product store.<br>Discover, explore, and upgrade your potential.</div>
+      <span class="welcome-arrow" aria-hidden="true">→</span>
+    </div>
+    <div class="energy-wave" aria-hidden="true"></div>
+    <div class="depth-scene" aria-hidden="true">
+      <div class="cube-spot"><div class="holo-cube"><span class="cube-face front">N.FC</span><span class="cube-face back">N.FC</span><span class="cube-face right">AI</span><span class="cube-face left">AI</span><span class="cube-face top">✦</span><span class="cube-face bottom">✦</span></div></div>
+      <div class="palm-orb"></div>
+      <i class="animated-book left-one"></i><i class="animated-book left-two"></i><i class="animated-book left-three"></i>
+      <i class="animated-book right-one"></i><i class="animated-book right-two"></i><i class="animated-book right-three"></i>
+      <i class="shelf-sweep one"></i><i class="shelf-sweep two"></i><i class="shelf-sweep three"></i>
+      <div class="orbit-stage"><span class="orbit one"></span><span class="orbit two"></span><span class="orbit three"></span></div>
+      <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i><i class="spark d"></i>
+    </div>
+    <div class="sound-control">
+      <button class="sound-button" id="nathaSound" type="button" aria-label="Play Natha's welcome greeting">Meet Natha  ·  Hear welcome</button>
+      <span class="voice-status" id="voiceStatus" role="status" aria-live="polite"></span>
+    </div>
+  </main>
+  <script>
+    const soundButton = document.getElementById('nathaSound');
+    const voiceStatus = document.getElementById('voiceStatus');
+    const greeting = 'My name is Natha! Welcome to N.FC AI SUPERMARKET. I am so happy you are here!';
+    const showroom = document.querySelector('.showroom');
+    const feminineVoiceNames = /\b(samantha|ava|aria|jenny|zira|susan|karen|moira|tessa|victoria|serena|allison|siri female|google us english)\b/i;
 
-</body></html>
+    function chooseEnglishVoice() {
+      const voices = window.speechSynthesis.getVoices();
+      const englishVoices = voices.filter((voice) => /^en([_-]|$)/i.test(voice.lang));
+      const feminine = englishVoices.find((voice) => feminineVoiceNames.test(`${voice.name} ${voice.voiceURI}`));
+      return { voice: feminine || englishVoices[0] || null, clearlyFeminineByName: Boolean(feminine) };
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.addEventListener('voiceschanged', chooseEnglishVoice);
+    }
+
+    soundButton.addEventListener('click', () => {
+      if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+        voiceStatus.textContent = 'Speech is not supported by this browser.';
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const selection = chooseEnglishVoice();
+      const utterance = new SpeechSynthesisUtterance(greeting);
+      if (selection.voice) utterance.voice = selection.voice;
+      utterance.lang = selection.voice?.lang || 'en-US';
+      utterance.rate = 0.9;
+      utterance.pitch = 1.34;
+      utterance.volume = 1;
+
+      if (selection.clearlyFeminineByName) {
+        voiceStatus.textContent = `Using ${selection.voice.name} (${selection.voice.lang}) with a brighter, higher pitch. Voice character is provided by your browser or system.`;
+      } else if (selection.voice) {
+        voiceStatus.textContent = `No clearly feminine English voice was identifiable by name. Using ${selection.voice.name} (${selection.voice.lang}); its voice character depends on your browser or system.`;
+      } else {
+        voiceStatus.textContent = 'No English voice is listed yet. Trying the browser default; voice character depends on your browser or system.';
+      }
+
+      utterance.onstart = () => { soundButton.textContent = 'Natha is speaking…'; showroom.classList.add('is-speaking'); };
+      utterance.onend = () => { soundButton.textContent = 'Meet Natha  ·  Hear welcome'; showroom.classList.remove('is-speaking'); };
+      utterance.onerror = () => {
+        soundButton.textContent = 'Meet Natha  ·  Hear welcome';
+        showroom.classList.remove('is-speaking');
+        voiceStatus.textContent = 'The browser could not play speech. Check its available voices and audio settings.';
+      };
+      window.speechSynthesis.speak(utterance);
+    });
+
+    let greetedOnFirstClick = false;
+    showroom.addEventListener('click', (event) => {
+      if (greetedOnFirstClick || event.target.closest('#nathaSound')) return;
+      greetedOnFirstClick = true;
+      soundButton.click();
+    });
+
+    let dragPanX = 0;
+    let dragPanY = 0;
+    let hoverPanX = 0;
+    let hoverPanY = 0;
+    let activePointer = null;
+    let lastX = 0;
+    let lastY = 0;
+    let dragDistance = 0;
+    let suppressNextClick = false;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function updateScenePosition() {
+      showroom.style.setProperty('--move-x', `${dragPanX + hoverPanX}px`);
+      showroom.style.setProperty('--move-y', `${dragPanY + hoverPanY}px`);
+    }
+
+    showroom.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('button, a') || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      activePointer = event.pointerId;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      dragDistance = 0;
+      showroom.classList.add('is-dragging');
+      showroom.setPointerCapture(event.pointerId);
+    });
+
+    showroom.addEventListener('pointermove', (event) => {
+      const bounds = showroom.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width;
+      const y = (event.clientY - bounds.top) / bounds.height;
+      if (activePointer === event.pointerId) {
+        const dx = event.clientX - lastX;
+        const dy = event.clientY - lastY;
+        dragDistance += Math.abs(dx) + Math.abs(dy);
+        if (dragDistance > 7) suppressNextClick = true;
+        dragPanX = Math.max(-24, Math.min(24, dragPanX + dx));
+        dragPanY = Math.max(-16, Math.min(16, dragPanY + dy));
+        lastX = event.clientX;
+        lastY = event.clientY;
+        hoverPanX = 0;
+        hoverPanY = 0;
+        updateScenePosition();
+      } else if (finePointer && !reducedMotion) {
+        hoverPanX = (0.5 - x) * 5;
+        hoverPanY = (0.5 - y) * 4;
+        updateScenePosition();
+      }
+      showroom.style.setProperty('--light-x', `${x * 100}%`);
+      showroom.style.setProperty('--light-y', `${y * 100}%`);
+    });
+
+    showroom.addEventListener('pointerup', (event) => {
+      if (activePointer !== event.pointerId) return;
+      activePointer = null;
+      showroom.classList.remove('is-dragging');
+      if (suppressNextClick) setTimeout(() => { suppressNextClick = false; }, 0);
+    });
+
+    showroom.addEventListener('pointercancel', () => {
+      activePointer = null;
+      showroom.classList.remove('is-dragging');
+      suppressNextClick = false;
+    });
+
+    showroom.addEventListener('pointerleave', () => {
+      if (activePointer !== null) return;
+      hoverPanX = 0;
+      hoverPanY = 0;
+      updateScenePosition();
+      showroom.style.setProperty('--light-x', '50%');
+      showroom.style.setProperty('--light-y', '45%');
+    });
+
+    showroom.addEventListener('click', (event) => {
+      if (!suppressNextClick) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressNextClick = false;
+    }, true);
+  </script>
+</body>
+</html>
