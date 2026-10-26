@@ -80,7 +80,7 @@
     .showroom.is-speaking .palm-orb { animation-duration: 1.1s; filter: saturate(1.4) brightness(1.2); }
     .showroom.is-speaking .holo-cube { animation-duration: 3.8s; }
     .showroom.is-speaking .orbit { box-shadow: 0 0 15px #72dfffaa, inset 0 0 18px #72dfff77; }
-    .sound-control { position: absolute; top: clamp(10px, 1.1vw, 16px); right: clamp(30px, 4vw, 64px); z-index: 5; display: grid; justify-items: end; gap: 7px; line-height: 1.35; pointer-events: none; }
+    .sound-control { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 100%; margin: 18px auto 26px; line-height: 1.35; pointer-events: auto; }
     .sound-button { border: 1px solid #e8ddbdad; border-radius: 999px; padding: 12px 17px; color: #fffdf5; background: linear-gradient(135deg, #17232be8, #11171be8); font: 600 9px/1 Inter, Arial, sans-serif; letter-spacing: .11em; text-transform: uppercase; cursor: pointer; pointer-events: auto; box-shadow: 0 8px 26px #070b10aa, inset 0 1px #ffffff22; backdrop-filter: blur(14px); transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
     .sound-button:hover { background: linear-gradient(135deg, #26343beF, #161e23f2); border-color: #fff0c9; transform: translateY(-1px); }
     .sound-button:focus-visible { outline: 2px solid #e9d69e; outline-offset: 3px; }
@@ -112,6 +112,8 @@
     @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; } .energy-wave, .orbit, .spark, .holo-cube, .shelf-sweep, .animated-book, .palm-orb, .palm-orb::before { animation: none !important; } }
       /* Match the supplied reference artwork exactly: preserve its original color and built-in composition. */
     .background-finish, .welcome-copy, .energy-wave, .depth-scene, .premium-header, .showroom::after { display: none !important; }
+    .showroom { line-height: normal; }
+    .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
   </style>
 </head>
