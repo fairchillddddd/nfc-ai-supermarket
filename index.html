@@ -17,8 +17,10 @@
 <div class="toast" id="toast">Featured product · Open the listing using the button above.</div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js"}}</script>
 <script type="module">
-import * as THREE from 'three';\nwindow.addEventListener('error',e=>{const l=document.querySelector('#loading');if(l&&l.isConnected){l.innerHTML='Unable to start 3D scene&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">A browser or graphics error interrupted initialization. Refresh or try another browser.</small>'}});
-const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');\nconst loadTimer=setTimeout(()=>{if(loading&&loading.isConnected){loading.innerHTML='3D scene is taking too long to load&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">Please refresh once. If it persists, the browser may be blocking the 3D module.</small>'}},8000);
+import * as THREE from 'three';
+window.addEventListener('error',e=>{const l=document.querySelector('#loading');if(l&&l.isConnected){l.innerHTML='Unable to start 3D scene&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">A browser or graphics error interrupted initialization. Refresh or try another browser.</small>'}});
+const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
+const loadTimer=setTimeout(()=>{if(loading&&loading.isConnected){loading.innerHTML='3D scene is taking too long to load&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">Please refresh once. If it persists, the browser may be blocking the 3D module.</small>'}},8000);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x777777);scene.fog=new THREE.FogExp2(0x777777,.012);
 const camera=new THREE.PerspectiveCamera(54,innerWidth/innerHeight,.1,160);camera.position.set(0,5.4,20.5);
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;root.appendChild(renderer.domElement);
