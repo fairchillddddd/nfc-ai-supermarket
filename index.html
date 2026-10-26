@@ -117,47 +117,9 @@
     .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
 
-    /* Ambient motion for the existing artwork: moving data-centre light, screen shimmer, and globe glow. */
-    .ambient-motion { position:absolute; z-index:1; inset:0; overflow:hidden; pointer-events:none; }
-    .ambient-motion::before { content:""; position:absolute; inset:0; opacity:.42; background:
-      linear-gradient(105deg, transparent 0 12%, #35d9ff00 17%, #35d9ff38 18%, #a8f7ff00 20%, transparent 28% 70%, #34dfff00 75%, #34dfff32 77%, transparent 81%),
-      radial-gradient(ellipse at 49% 39%, #36dfff24 0%, #36dfff00 22%),
-      radial-gradient(ellipse at 8% 45%, #20dfff18 0%, transparent 22%),
-      radial-gradient(ellipse at 91% 42%, #20dfff1b 0%, transparent 22%);
-      animation: server-light-sweep 12s ease-in-out infinite alternate; mix-blend-mode:screen; }
-    .ambient-motion::after { content:""; position:absolute; left:0; right:0; top:-35%; height:18%; opacity:0; background:linear-gradient(180deg, transparent, #55eaff20 45%, #bafaff65 50%, #42dcff18 55%, transparent); filter:blur(5px); animation: data-scan 9s linear infinite; mix-blend-mode:screen; }
-    .ambient-motion .rack-pulse { position:absolute; top:7%; bottom:23%; width:2px; opacity:0; background:linear-gradient(180deg, transparent, #51eaffbb 12%, #bafaff 50%, #37cfffaa 83%, transparent); box-shadow:0 0 8px 2px #28cfff77; }
-    .ambient-motion .rack-pulse.left { left:5.3%; animation:rack-blink 4.8s ease-in-out infinite; }
-    .ambient-motion .rack-pulse.right { right:5.8%; animation:rack-blink 5.7s ease-in-out -2.2s infinite; }
-    .ambient-motion .globe-aura { position:absolute; left:49.8%; top:39%; width:15%; aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle, #62eaff25 0%, #35cfff15 38%, transparent 70%); animation:globe-aura-pulse 4.2s ease-in-out infinite; }
-    @keyframes server-light-sweep { 0% { transform:translateX(-1.5%) scale(1); opacity:.18; } 50% { opacity:.48; } 100% { transform:translateX(1.5%) scale(1.025); opacity:.28; } }
-    @keyframes data-scan { 0% { top:-35%; opacity:0; } 12% { opacity:.8; } 82% { opacity:.45; } 100% { top:105%; opacity:0; } }
-    @keyframes rack-blink { 0%,100% { opacity:0; } 20% { opacity:.28; } 35% { opacity:.08; } 52% { opacity:.58; } 68% { opacity:.14; } }
-    @keyframes globe-aura-pulse { 0%,100% { opacity:.35; transform:translate(-50%,-50%) scale(.92); } 50% { opacity:1; transform:translate(-50%,-50%) scale(1.12); } }
-    @media (max-width:520px) { .ambient-motion .globe-aura { width:15%; } .ambient-motion .rack-pulse.left { left:4%; } .ambient-motion .rack-pulse.right { right:4%; } }
-    @media (prefers-reduced-motion:reduce) { .ambient-motion::before, .ambient-motion::after, .ambient-motion .rack-pulse, .ambient-motion .globe-aura { animation:none !important; } }
-
-    /* Replace the flat central globe visually with a single rotating 3D holographic sphere. */
-    .globe-stage { position:absolute; z-index:2; left:49.8%; top:39.2%; width:15.5%; aspect-ratio:1; transform:translate(-50%,-50%); perspective:900px; pointer-events:none; }
-    .globe-mask { position:absolute; inset:-5%; border-radius:50%; background:radial-gradient(circle at 35% 28%, #071d30 0%, #041321 48%, #020811 76%, #02070c 100%); box-shadow:inset -18px -8px 28px #000e, inset 6px 3px 18px #47ddff36, 0 0 12px #3fe4ff66, 0 0 34px #22bfff42; overflow:hidden; }
-    .globe-spin { position:absolute; inset:-5%; border-radius:50%; overflow:hidden; transform-style:preserve-3d; animation:earth-turn 12s linear infinite; }
-    .globe-spin::before { content:""; position:absolute; inset:-8% -45%; border-radius:50%; background:
-      repeating-linear-gradient(0deg, transparent 0 9%, #58eaff7a 9.3% 9.8%, transparent 10.1% 19%),
-      repeating-linear-gradient(90deg, transparent 0 10%, #5ceaff80 10.3% 10.8%, transparent 11.1% 20%),
-      radial-gradient(ellipse at 35% 38%, #55dfff8c 0 2%, transparent 3% 100%),
-      radial-gradient(ellipse at 55% 62%, #1b9fdf4a, transparent 55%);
-      box-shadow:inset 0 0 22px #46e7ff88; animation:earth-texture 7s linear infinite; }
-    .globe-spin::after { content:""; position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 28% 23%, #bdfaff2e, transparent 24%), linear-gradient(100deg, #0009 0%, transparent 28% 65%, #000a 100%); box-shadow:inset -8px -2px 18px #000b, inset 4px 2px 12px #77eaff38; }
-    .globe-meridian-3d { position:absolute; inset:0 24%; border:1px solid #79edffb0; border-radius:50%; box-shadow:0 0 8px #41dfff66, inset 0 0 7px #41dfff55; transform:rotateY(0deg); animation:meridian-turn 5s linear infinite; }
-    .globe-equator-3d { position:absolute; left:-4%; top:39%; width:108%; height:22%; border:1px solid #b2f8ffb8; border-radius:50%; transform:rotate(-10deg); box-shadow:0 0 9px #54eaffaa, inset 0 0 8px #54eaff66; }
-    .globe-orbit-3d { position:absolute; inset:-15% -23%; border:1px solid #8cefffba; border-radius:50%; transform:rotateX(68deg) rotateZ(-17deg); box-shadow:0 0 8px #47dfff88; animation:globe-orbit-turn 9s linear infinite; }
-    .globe-orbit-3d::after { content:""; position:absolute; left:14%; top:8%; width:5px; height:5px; border-radius:50%; background:#fff; box-shadow:0 0 9px 3px #5feaff; }
-    @keyframes earth-turn { from { transform:rotateY(0deg) rotateX(-5deg); } to { transform:rotateY(360deg) rotateX(-5deg); } }
-    @keyframes earth-texture { from { transform:translateX(-12%) rotateZ(-4deg); } to { transform:translateX(12%) rotateZ(-4deg); } }
-    @keyframes meridian-turn { from { transform:rotateY(0deg); } to { transform:rotateY(360deg); } }
-    @keyframes globe-orbit-turn { from { transform:rotateX(68deg) rotateZ(-17deg); } to { transform:rotateX(68deg) rotateZ(343deg); } }
-    @media (max-width:520px) { .globe-stage { width:15.5%; } .globe-orbit-3d::after { width:3px; height:3px; } }
-    @media (prefers-reduced-motion:reduce) { .globe-spin, .globe-spin::before, .globe-meridian-3d, .globe-orbit-3d { animation:none !important; } }
+    .showroom { line-height: normal; }
+    .sound-control { top: auto !important; right: auto !important; }
+    .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
   </style>
 </head>
 <body>
@@ -166,8 +128,6 @@
       <div class="brand-lockup"><span class="brand-monogram">N.FC</span><span class="brand-copy"><span class="brand-name">N.FC AI SUPERMARKET</span><span class="brand-caption">A MORE INTELLIGENT WAY TO EXPLORE</span></span></div>
     </header>
     <img class="reference" src="/assets/B4AC8926-2898-4B33-9BD0-46CF56A3038D.png" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
-    <div class="ambient-motion" aria-hidden="true"><i class="rack-pulse left"></i><i class="rack-pulse right"></i><i class="globe-aura"></i></div>
-    <div class="globe-stage" aria-hidden="true"><div class="globe-mask"><div class="globe-spin"><i class="globe-meridian-3d"></i><i class="globe-equator-3d"></i></div></div><i class="globe-orbit-3d"></i></div>
     <div class="background-finish" aria-hidden="true"></div>
     <div class="welcome-copy" aria-label="My name is Natha. Welcome to N.FC AI SUPERMARKET. Your AI-powered digital product store. Discover, explore, and upgrade your potential.">
       <div class="welcome-title">My name is Natha,<strong>welcome to N.FC AI SUPERMARKET.</strong></div>
