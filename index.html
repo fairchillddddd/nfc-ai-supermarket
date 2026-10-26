@@ -29,15 +29,15 @@ window.addEventListener('error',function(){
  if(l)l.innerHTML='3D engine could not start · N.FC <small style="display:block;margin-top:12px;max-width:300px;text-align:center;font-size:10px;line-height:1.7;letter-spacing:.03em;text-transform:none">A script or graphics error stopped the showroom. Try opening this preview in Chrome or Safari.</small>';
 });
 </script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js"}}</script>
-<script type="module">
-import * as THREE from 'three';
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="window.__nfc3dCdnFailed=true"></script>
+<script>
+if(!window.THREE){const l=document.getElementById("loading");if(l)l.textContent="3D library could not load · N.FC";throw new Error("Three.js CDN unavailable");}
 window.addEventListener('error',e=>{const l=document.querySelector('#loading');if(l&&l.isConnected){l.innerHTML='Unable to start 3D scene&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">A browser or graphics error interrupted initialization. Refresh or try another browser.</small>'}});
 window.__nfc3dStarted=true;clearTimeout(window.__nfc3dFallbackTimer);\nconst root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
 const loadTimer=setTimeout(()=>{if(loading&&loading.isConnected){loading.innerHTML='3D scene is taking too long to load&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">Please refresh once. If it persists, the browser may be blocking the 3D module.</small>'}},8000);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x777777);scene.fog=new THREE.FogExp2(0x777777,.012);
 const camera=new THREE.PerspectiveCamera(54,innerWidth/innerHeight,.1,160);camera.position.set(0,5.4,20.5);
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;root.appendChild(renderer.domElement);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;root.appendChild(renderer.domElement);
 scene.add(new THREE.HemisphereLight(0xffffff,0x555555,3.0));
 function light(color,intensity,pos,distance=18){const l=new THREE.PointLight(color,intensity,distance,2);l.position.set(...pos);scene.add(l);return l}
 light(0xffffff,150,[0,9,2],34);light(0xd8d8d8,110,[-9,6,-4],30);light(0xffffff,110,[9,6,-4],30);
