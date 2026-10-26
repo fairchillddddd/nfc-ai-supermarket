@@ -8,7 +8,7 @@
 </style>
 </head>
 <body>
-<div class="loading" id="loading">Initializing 3D universe&nbsp; · &nbsp;N.FC</div>
+<div class="loading" id="loading">Initializing 3D universe&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">If the showroom does not appear, your browser may not support WebGL or may be blocking the 3D module.</small></div>
 <div id="scene" aria-label="Interactive 3D virtual showroom"></div><div class="vignette"></div>
 <header><div class="brand">N.FC<small>AI SUPERMARKET</small></div><div class="topright"><div class="status"><span class="dot"></span> 3D showroom online</div><a class="outline" href="#explore" id="enterTop">ENTER THE STORE ↗</a></div></header>
 <section class="content"><div class="eyebrow">A new dimension of discovery</div><h1>Step into the<br><span>AI universe.</span></h1><p>A virtual showroom for practical AI tools, digital guides and creative resources. Look around, explore the space, and discover your next useful idea.</p><div class="actions"><a class="btn" href="#explore" id="exploreBtn">Explore the showroom <span>↗</span></a><a class="btn secondary" href="https://payhip.com/b/XBZRt" target="_blank" rel="noopener noreferrer">Featured book ↗</a></div></section>
@@ -17,8 +17,8 @@
 <div class="toast" id="toast">Featured product · Open the listing using the button above.</div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js"}}</script>
 <script type="module">
-import * as THREE from 'three';
-const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');
+import * as THREE from 'three';\nwindow.addEventListener('error',e=>{const l=document.querySelector('#loading');if(l&&l.isConnected){l.innerHTML='Unable to start 3D scene&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">A browser or graphics error interrupted initialization. Refresh or try another browser.</small>'}});
+const root=document.querySelector('#scene'),loading=document.querySelector('#loading'),toast=document.querySelector('#toast');\nconst loadTimer=setTimeout(()=>{if(loading&&loading.isConnected){loading.innerHTML='3D scene is taking too long to load&nbsp; · &nbsp;N.FC <small style="display:block;margin-top:12px;font-size:9px;letter-spacing:.08em;text-transform:none">Please refresh once. If it persists, the browser may be blocking the 3D module.</small>'}},8000);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x777777);scene.fog=new THREE.FogExp2(0x777777,.012);
 const camera=new THREE.PerspectiveCamera(54,innerWidth/innerHeight,.1,160);camera.position.set(0,5.4,20.5);
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;root.appendChild(renderer.domElement);
@@ -140,7 +140,7 @@ renderer.domElement.addEventListener('pointerdown',e=>{dragging=true;lastX=e.cli
 renderer.domElement.addEventListener('click',()=>{ray.setFromCamera(pointer,camera);const hits=ray.intersectObjects(interactives,true);if(hits.length){let o=hits[0].object;while(o.parent&&!o.userData.title)o=o.parent;if(o.userData.title){toast.textContent=o.userData.title+' · Explore the featured listing';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2400)}}});
 document.querySelectorAll('#enterTop,#exploreBtn').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();targetY=0;targetX=0;camera.position.set(0,5.4,20.5);toast.textContent='Welcome to the showroom · Drag to look around';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600)}));
 let clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();rotY+=(targetY-rotY)*.035;rotX+=(targetX-rotX)*.035;camera.position.x=Math.sin(rotY)*20.5;camera.position.z=Math.cos(rotY)*20.5;camera.position.y=5.4+rotX*5;camera.lookAt(0,3.1,-3.5);interactives.forEach((b,i)=>{b.position.y=b.userData.baseY+Math.sin(t*1.1+b.userData.phase)*.1;b.rotation.y+=(Math.sin(t*.35+i)*.025+b.rotation.y)*.002});orbs.forEach(o=>{if(o.particle){o.m.position.y=o.base+Math.sin(t*o.speed+o.a)*.12}else{o.m.position.x=Math.cos(o.a+t*o.speed)*o.r;o.m.position.z=-3+Math.sin(o.a+t*o.speed)*o.r*.7;o.m.position.y=o.base+Math.sin(t*1.2+o.a)*.22}});renderer.render(scene,camera)}
-animate();loading.classList.add('hide');setTimeout(()=>loading.remove(),650);
+animate();clearTimeout(loadTimer);loading.classList.add('hide');setTimeout(()=>loading.remove(),650);
 addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setSize(innerWidth,innerHeight)});
 </script>
 </body></html>
