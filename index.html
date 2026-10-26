@@ -9,8 +9,24 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; min-height: 100%; }
     body { background: #11151a; font-family: Inter, Arial, sans-serif; }
-    .showroom { position: relative; width: 100%; max-width: 1920px; margin: 0 auto; line-height: 0; }
-    .reference { display: block; width: 100%; height: auto; }
+    .showroom { --tilt-x: 0deg; --tilt-y: 0deg; --move-x: 0px; --move-y: 0px; position: relative; width: 100%; max-width: 1920px; margin: 0 auto; line-height: 0; overflow: hidden; isolation: isolate; perspective: 1400px; background: #11151a; }
+    .reference { display: block; width: 100%; height: auto; transform: perspective(1400px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translate3d(var(--move-x), var(--move-y), 0) scale(1.035); transform-origin: center; transition: transform 700ms cubic-bezier(.2,.7,.2,1), filter 700ms ease; will-change: transform; }
+    .depth-scene { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; transform: perspective(1400px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translate3d(var(--move-x), var(--move-y), 0); transform-style: preserve-3d; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+    .orbit-stage { position: absolute; left: 50%; top: 73%; width: 43%; height: 27%; transform: translate(-50%, -50%); transform-style: preserve-3d; }
+    .orbit { position: absolute; inset: 0; border: 1px solid #a2efff99; border-radius: 50%; box-shadow: 0 0 9px #72dfff66, inset 0 0 12px #72dfff44; transform-style: preserve-3d; }
+    .orbit.one { animation: orbit-one 13s linear infinite; }
+    .orbit.two { inset: 9% -7%; border-color: #fff9; animation: orbit-two 17s linear infinite; }
+    .orbit.three { inset: 20% 12%; border-style: dashed; border-color: #91cfffaa; animation: orbit-three 22s linear infinite; }
+    .spark { position: absolute; width: clamp(4px, .55vw, 9px); aspect-ratio: 1; border-radius: 50%; background: #e6fbff; box-shadow: 0 0 8px 3px #73dbffb3, 0 0 22px 6px #67caff66; animation: sparkle 2.8s ease-in-out infinite alternate; }
+    .spark.a { left: 31%; top: 41%; animation-delay: -.7s; }
+    .spark.b { left: 63%; top: 35%; animation-delay: -1.8s; }
+    .spark.c { left: 72%; top: 56%; animation-delay: -.2s; }
+    .spark.d { left: 39%; top: 62%; animation-delay: -2.1s; }
+    @keyframes orbit-one { from { transform: rotateX(71deg) rotateZ(0deg); } to { transform: rotateX(71deg) rotateZ(360deg); } }
+    @keyframes orbit-two { from { transform: rotateX(67deg) rotateY(18deg) rotateZ(360deg); } to { transform: rotateX(67deg) rotateY(18deg) rotateZ(0deg); } }
+    @keyframes orbit-three { from { transform: rotateX(78deg) rotateY(-25deg) rotateZ(0deg); } to { transform: rotateX(78deg) rotateY(-25deg) rotateZ(360deg); } }
+    @keyframes sparkle { from { opacity: .35; scale: .7; } to { opacity: 1; scale: 1.25; } }
+    .showroom::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse at var(--light-x, 50%) var(--light-y, 45%), #d9f5ff2b, transparent 45%); mix-blend-mode: screen; }
     .sound-control { position: absolute; right: clamp(10px, 2.4vw, 36px); bottom: clamp(12px, 3vw, 42px); z-index: 1; display: grid; justify-items: end; gap: 7px; line-height: 1.35; }
     .sound-button { border: 1px solid #fff; border-radius: 999px; padding: 11px 16px; color: #fff; background: #171a1de8; font: 600 13px/1.2 Inter, Arial, sans-serif; cursor: pointer; box-shadow: 0 5px 20px #1115; }
     .sound-button:hover { background: #343a40; }
@@ -18,15 +34,22 @@
     .voice-status { max-width: min(290px, 74vw); padding: 6px 9px; border-radius: 8px; color: #fff; background: #171a1dcc; font: 12px/1.4 Inter, Arial, sans-serif; text-align: right; }
     .voice-status:empty { display: none; }
     @media (max-width: 520px) {
+      .reference { transform: scale(1.02); }
+      .orbit-stage { width: 52%; height: 27%; top: 73%; }
       .sound-control { right: 8px; bottom: 8px; gap: 4px; }
       .sound-button { padding: 8px 11px; font-size: 11px; }
       .voice-status { max-width: 68vw; font-size: 10px; }
     }
+    @media (prefers-reduced-motion: reduce) { .reference, .depth-scene { transition: none; transform: none; } .orbit, .spark { animation: none !important; } }
   </style>
 </head>
 <body>
   <main class="showroom" aria-label="N.FC AI SUPERMARKET showroom">
     <img class="reference" src="/assets/natha-showroom-reference.jpg" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
+    <div class="depth-scene" aria-hidden="true">
+      <div class="orbit-stage"><span class="orbit one"></span><span class="orbit two"></span><span class="orbit three"></span></div>
+      <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i><i class="spark d"></i>
+    </div>
     <div class="sound-control">
       <button class="sound-button" id="nathaSound" type="button" aria-label="Play Natha's welcome greeting">▶ Hear Natha welcome</button>
       <span class="voice-status" id="voiceStatus" role="status" aria-live="polite"></span>
@@ -35,7 +58,8 @@
   <script>
     const soundButton = document.getElementById('nathaSound');
     const voiceStatus = document.getElementById('voiceStatus');
-    const greeting = 'My name is Natha, welcome to N.FC AI SUPERMARKET.';
+    const greeting = 'My name is Natha! Welcome to N.FC AI SUPERMARKET. I am so happy you are here!';
+    const showroom = document.querySelector('.showroom');
     const feminineVoiceNames = /\b(samantha|ava|aria|jenny|zira|susan|karen|moira|tessa|victoria|serena|allison|siri female|google us english)\b/i;
 
     function chooseEnglishVoice() {
@@ -60,12 +84,12 @@
       const utterance = new SpeechSynthesisUtterance(greeting);
       if (selection.voice) utterance.voice = selection.voice;
       utterance.lang = selection.voice?.lang || 'en-US';
-      utterance.rate = 0.88;
-      utterance.pitch = 1.12;
+      utterance.rate = 0.9;
+      utterance.pitch = 1.34;
       utterance.volume = 1;
 
       if (selection.clearlyFeminineByName) {
-        voiceStatus.textContent = `Using ${selection.voice.name} (${selection.voice.lang}). Voice character is provided by your browser or system.`;
+        voiceStatus.textContent = `Using ${selection.voice.name} (${selection.voice.lang}) with a brighter, higher pitch. Voice character is provided by your browser or system.`;
       } else if (selection.voice) {
         voiceStatus.textContent = `No clearly feminine English voice was identifiable by name. Using ${selection.voice.name} (${selection.voice.lang}); its voice character depends on your browser or system.`;
       } else {
@@ -80,6 +104,35 @@
       };
       window.speechSynthesis.speak(utterance);
     });
+
+    let greetedOnFirstClick = false;
+    showroom.addEventListener('click', (event) => {
+      if (greetedOnFirstClick || event.target.closest('#nathaSound')) return;
+      greetedOnFirstClick = true;
+      soundButton.click();
+    });
+
+    if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      showroom.addEventListener('pointermove', (event) => {
+        const bounds = showroom.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width;
+        const y = (event.clientY - bounds.top) / bounds.height;
+        showroom.style.setProperty('--tilt-x', `${(0.5 - x) * 1.8}deg`);
+        showroom.style.setProperty('--tilt-y', `${(y - 0.5) * 1.4}deg`);
+        showroom.style.setProperty('--move-x', `${(0.5 - x) * 5}px`);
+        showroom.style.setProperty('--move-y', `${(0.5 - y) * 4}px`);
+        showroom.style.setProperty('--light-x', `${x * 100}%`);
+        showroom.style.setProperty('--light-y', `${y * 100}%`);
+      });
+      showroom.addEventListener('pointerleave', () => {
+        showroom.style.setProperty('--tilt-x', '0deg');
+        showroom.style.setProperty('--tilt-y', '0deg');
+        showroom.style.setProperty('--move-x', '0px');
+        showroom.style.setProperty('--move-y', '0px');
+        showroom.style.setProperty('--light-x', '50%');
+        showroom.style.setProperty('--light-y', '45%');
+      });
+    }
   </script>
 </body>
 </html>
