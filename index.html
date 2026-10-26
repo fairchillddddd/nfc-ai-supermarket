@@ -116,12 +116,6 @@
     .showroom { line-height: normal; }
     .sound-control { top: auto !important; right: auto !important; }
     .reference { filter: none !important; transform: none !important; opacity: 1 !important; }
-    /* The moving globe uses pixels cropped from the original artwork image itself. */
-    .globe-window { position:absolute; z-index:2; left:50.4%; top:40.7%; width:11.4%; aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; pointer-events:none; background:radial-gradient(circle at 42% 36%,#071b2a 0%,#02080e 70%); box-shadow:0 0 10px #80eaff55,inset 0 0 14px #000; }
-    .globe-texture { position:absolute; inset:-5% -42%; width:184%; height:110%; border-radius:50%; background-image:url('/assets/B4AC8926-2898-4B33-9BD0-46CF56A3038D.png'); background-repeat:no-repeat; background-size:850% auto; background-position:50.4% 40.7%; filter:brightness(1.08) saturate(1.12); animation:globe-texture-turn 18s linear infinite; transform-style:preserve-3d; }
-    .globe-window::after { content:""; position:absolute; inset:0; border-radius:50%; background:linear-gradient(90deg,#0009 0%,transparent 22% 68%,#0008 100%),radial-gradient(ellipse at 30% 24%,#d9fbff30,transparent 34%); box-shadow:inset 0 0 12px #01060c; }
-    @keyframes globe-texture-turn { 0% { transform:translateX(-5%) rotateY(0deg); } 50% { transform:translateX(5%) rotateY(180deg); } 100% { transform:translateX(-5%) rotateY(360deg); } }
-    @media (prefers-reduced-motion:reduce) { .globe-texture { animation:none !important; } }
 
     /* Ambient data-centre motion only — no added globe or replacement objects. */
     .data-centre-motion { position:absolute; z-index:1; inset:0; pointer-events:none; overflow:hidden; }
@@ -150,7 +144,6 @@
       <div class="brand-lockup"><span class="brand-monogram">N.FC</span><span class="brand-copy"><span class="brand-name">N.FC AI SUPERMARKET</span><span class="brand-caption">A MORE INTELLIGENT WAY TO EXPLORE</span></span></div>
     </header>
     <img class="reference" src="/assets/B4AC8926-2898-4B33-9BD0-46CF56A3038D.png" alt="N.FC AI SUPERMARKET futuristic silver showroom with a female AI greeter named Natha, a welcome panel, product shelves, and a circular platform">
-    <div class="globe-window" aria-hidden="true"><div class="globe-texture"></div></div>
     <div class="data-centre-motion" aria-hidden="true"><i class="rack-light left"></i><i class="rack-light right"></i></div>
     <div class="background-finish" aria-hidden="true"></div>
     <div class="welcome-copy" aria-label="My name is Natha. Welcome to N.FC AI SUPERMARKET. Your AI-powered digital product store. Discover, explore, and upgrade your potential.">
